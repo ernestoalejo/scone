@@ -1,6 +1,7 @@
 files = Split("""
 	main.cpp
 	private-main.cpp
+	resources-manager.cpp
 	music-player.cpp
 
 """)
