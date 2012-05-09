@@ -6,15 +6,7 @@
 #include <SFML/Audio.hpp>
 
 
-class MusicPlayer{
-private:
-	DISALLOW_COPY_AND_ASSIGN(MusicPlayer);
-
-	vector <sf::Music*> music;
-	int current;
-	int size;
-	bool playing;
-	void next();
+class MusicPlayer {
 public:
 	MusicPlayer();
 	~MusicPlayer();
@@ -26,6 +18,15 @@ public:
 
 	void chooseRandom();
 
+private:
+	DISALLOW_COPY_AND_ASSIGN(MusicPlayer);
+
+	vector <sf::Music*> music;
+	int current;
+	int size;
+	bool playing;
+	
+	void next();
 };
 
 

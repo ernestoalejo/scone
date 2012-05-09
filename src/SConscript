@@ -1,9 +1,9 @@
+
 files = Split("""
 	main.cpp
 	private-main.cpp
 	resources-manager.cpp
 	music-player.cpp
-
 """)
 
 libs = ['sfml-system', 'sfml-window', 'sfml-graphics', 'sfml-audio']

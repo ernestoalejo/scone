@@ -19,4 +19,7 @@ const float SCREEN_HEIGHT = 480;
 const float HALF_SCREEN_HEIGHT = SCREEN_HEIGHT / 2;
 const float HALF_SCREEN_WIDTH = SCREEN_WIDTH / 2;
 
+#define LOG cout
+#define ERROR cerr
+
 #endif
