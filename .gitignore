@@ -1,4 +1,4 @@
 bin/*
-objs/*
+obj/*
 src/private-main.cpp
 .sconsign.dblite
