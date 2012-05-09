@@ -1,0 +1,9 @@
+files = Split("""
+	main.cpp
+	//Introducir aquí los cpp's.
+
+""")
+
+libs = ['sfml-system', 'sfml-window', 'sfml-graphics', 'sfml-audio']
+
+Program('#bin/test', files, LIBS=libs, CPPPATH='#include', LIBPATH='/usr/local/lib')
