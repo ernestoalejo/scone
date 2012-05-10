@@ -29,6 +29,21 @@ void ResourcesManager::loadTextures(sf::Sprite& sprite, string name) {
 	sprite.setOrigin(bounds.width/2, bounds.height/2);
 }
 
+sf::Music &ResourcesManager::loadMusic( string name){
+
+	if(music.count(name) > 0)
+		return *music[name];
+
+	LOG << " * Cargando musica " << name << "..." << endl;
+
+	music[name] = new sf::Music ();
+	string dir("data/music/" + name + ".ogg");
+	if(!music[name]->openFromFile(dir))
+		ERROR << "Error cargando musica " << dir << endl;
+	return *music[name];
+
+}
+
 ResourcesManager::~ResourcesManager(void) {
 	//Para texturas
 	{

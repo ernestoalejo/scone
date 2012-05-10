@@ -13,6 +13,7 @@ public:
 	~ResourcesManager(void);
 
 	void loadTextures(sf::Sprite& sprite, string name);
+	sf::Music &loadMusic( string name);
 
 private:
 	DISALLOW_COPY_AND_ASSIGN(ResourcesManager);
