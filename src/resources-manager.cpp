@@ -45,10 +45,17 @@ sf::Music &ResourcesManager::loadMusic( string name){
 }
 
 ResourcesManager::~ResourcesManager(void) {
-	//Para texturas
+	//Para texturas.
 	{
 		typedef map<string, sf::Texture*>::const_iterator iterator;
 		for(iterator i = textures.begin(); i != textures.end(); ++i){
+			delete i->second;
+		}
+	}
+	//Para musica.
+	{
+		typedef map<string, sf::Music*>::const_iterator iterator;
+		for(iterator i = music.begin(); i != music.end(); i++){
 			delete i->second;
 		}
 	}
