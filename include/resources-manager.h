@@ -14,6 +14,7 @@ public:
 
 	void loadTextures(sf::Sprite& sprite, string name);
 	sf::Music &loadMusic( string name);
+	const sf::Font &loadFont(const string &name);
 
 private:
 	DISALLOW_COPY_AND_ASSIGN(ResourcesManager);
