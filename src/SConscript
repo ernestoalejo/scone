@@ -4,8 +4,9 @@ files = Split("""
 	private-main.cpp
 	resources-manager.cpp
 	music-player.cpp
+	level-loader.cpp
 """)
 
 libs = ['sfml-system', 'sfml-window', 'sfml-graphics', 'sfml-audio']
 
-Program('#bin/test', files, LIBS=libs, CPPPATH='#include', LIBPATH='/usr/local/lib')
+Program('#bin/scone', files, LIBS=libs, CPPPATH='#include', LIBPATH='/usr/local/lib')
