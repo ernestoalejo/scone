@@ -51,7 +51,7 @@ const sf::Font &ResourcesManager::loadFont(const string &name){
 		return *fonts[name];
 	}
 	//Si no esta cargado, lo carga desde disco.
-	LOG << " *Cargando fuentes " << name << "..." << endl;
+	LOG << " * Cargando fuentes " << name << "..." << endl;
 	
 	fonts[name] = new sf::Font();
 	string dir("data/fonts/" + name + ".ttf");
