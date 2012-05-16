@@ -2,7 +2,9 @@
 #include "resources-manager.h"
 
 //Constructor por defecto
-ResourcesManager::ResourcesManager() {
+ResourcesManager::ResourcesManager(string n)
+:datoprivado(n)
+{
 	//vacio.
 }
 

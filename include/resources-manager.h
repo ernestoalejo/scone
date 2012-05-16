@@ -9,7 +9,7 @@
 
 class ResourcesManager {
 public:
-	ResourcesManager();
+	ResourcesManager(string);
 	~ResourcesManager(void);
 
 	void loadTextures(sf::Sprite& sprite, string name);

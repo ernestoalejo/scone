@@ -24,8 +24,8 @@ BgScroller::~BgScroller() {
 }
 
 void BgScroller::update(float diff) {
-	//posx = camera->getX();
-	posx+=0.001;
+	posx = camera->getX();
+	//posx+=0.1;
 
 	current = (posx / bgWidth);
 
@@ -39,9 +39,8 @@ void BgScroller::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	if(drawNext)
 		target.draw(sprites[current+1]);
 }
-/*
+
 
 void BgScroller::follow(Camera& camera) {
 	this->camera = &camera;
-
-	*/
+}

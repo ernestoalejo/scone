@@ -12,7 +12,7 @@ private:
 	DISALLOW_COPY_AND_ASSIGN(BgScroller);
 	vector<sf::Sprite> sprites;
 	int current, size;
-	//Camera* camera;
+	Camera* camera;
     float posx;
 	bool drawNext;
 	float bgWidth, halfBgWidth;
@@ -24,7 +24,7 @@ public:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void update(float diff);
 
-	//void follow(Camera& camera);
+	void follow(Camera& camera);
 };
 
 #endif
