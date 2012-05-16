@@ -18,7 +18,7 @@ class LevelLoader{
 private:
 	DISALLOW_COPY_AND_ASSIGN(LevelLoader);
 	void Load(string name);
-	vector<Platform> platforms(n); 
+	vector<Platform> platforms; 
 
 
 public:
