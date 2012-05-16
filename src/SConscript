@@ -7,6 +7,7 @@ files = Split("""
 	level-loader.cpp
 	camera.cpp
 	sprite.cpp
+	bgscroller.cpp
 """)
 
 libs = ['sfml-system', 'sfml-window', 'sfml-graphics', 'sfml-audio']
