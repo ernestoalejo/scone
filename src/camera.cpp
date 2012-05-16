@@ -35,3 +35,6 @@ void Camera::follow (Sprite& sprite)
 		this->sprite=&sprite;
 	}
 		
+int Camera::getX(){
+	return view.getCenter().x - SCREEN_WIDTH/2;
+}

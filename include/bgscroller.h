@@ -5,6 +5,7 @@
 #include "resources-manager.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include "camera.h"
 
 class BgScroller :public sf::Drawable {
 

@@ -23,6 +23,9 @@ public:
 	void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 	
 	void follow (Sprite& sprite);
+
+	int getX();
+
 	
 };
 #endif
