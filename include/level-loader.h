@@ -5,11 +5,20 @@
 
 #include "common.h"
 #include <vector>
+#include <SFML/Graphics.hpp>
 
 
-struct Platform{
-	float x, y;
-	int w, h;
+class Platform{
+private:
+	sf::Vector2f pos;
+	sf::Vector2f size;
+	string tipo;
+
+public:
+	Platform(string tipo,float x,float y,int w,int h);
+	sf::Vector2f getPos();
+	sf::Vector2f getSize();
+
 };
 
 
