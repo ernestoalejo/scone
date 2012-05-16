@@ -23,7 +23,7 @@ private:
 
 public:
 	LevelLoader(string name);
-	vector<Platform> Get();
+	vector<Platform> getPlatform();
 
 
 };

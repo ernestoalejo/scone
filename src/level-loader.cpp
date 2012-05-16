@@ -37,7 +37,7 @@ void LevelLoader::Load(string name){            //Funcion carga
 	file.close();
 }
 
-vector<Platform> LevelLoader::Get(){               //Devuelve vector
+vector<Platform> LevelLoader::getPlatform(){               //Devuelve vector
 	return platforms;
 }
 
