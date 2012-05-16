@@ -17,7 +17,7 @@ void ResourcesManager::loadTextures(sf::Sprite &sprite, string name) {
 		LOG << " * Cargando imagen " << name << "..." << endl;
 
 		objetotextura = new sf::Texture ();
-		string dir("data/textures/" + name + ".png");
+		string dir(datoprivado + "/textures/" + name + ".png");
 		if(!objetotextura->loadFromFile(dir))
 			ERROR << "Error cargando imagen " << dir << endl;
 
@@ -39,7 +39,7 @@ sf::Music &ResourcesManager::loadMusic(string name){
 	LOG << " * Cargando musica " << name << "..." << endl;
 
 	music[name] = new sf::Music ();
-	string dir("data/music/" + name + ".ogg");
+	string dir(datoprivado + "/music/" + name + ".ogg");
 	if(!music[name]->openFromFile(dir))
 		ERROR << "Error cargando musica " << dir << endl;
 	return *music[name];
@@ -54,7 +54,7 @@ const sf::Font &ResourcesManager::loadFont(const string &name){
 	LOG << " * Cargando fuentes " << name << "..." << endl;
 	
 	fonts[name] = new sf::Font();
-	string dir("data/fonts/" + name + ".ttf");
+	string dir(datoprivado + "/fonts/" + name + ".ttf");
 	if(!fonts[name]->loadFromFile(dir))
 		ERROR << "Error cargando fuente " << dir << endl;
 	return *fonts[name];

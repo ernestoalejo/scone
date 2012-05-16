@@ -18,7 +18,7 @@ public:
 
 private:
 	DISALLOW_COPY_AND_ASSIGN(ResourcesManager);
-
+	string datoprivado;
 	map<string, sf::Texture*> textures;
 	map<string, sf::Music*> music;
 	map<string, sf::Font*> fonts;
