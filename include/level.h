@@ -1,5 +1,5 @@
-#ifndef _LEVEL_H_
-#define _LEVEL_H_
+#ifndef __LEVEL_H__
+#define __LEVEL_H__
 
 #include <SFML/Graphics.hpp>
 

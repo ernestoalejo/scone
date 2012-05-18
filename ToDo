@@ -1,0 +1,13 @@
+
+ ~ Unit tests para todos los archivos .cpp.
+ ~ Terminar el Level / LevelLoader con el cargador genérico.
+ ~ Documentar un poco mejor todos los items del proyecto.
+ ~ Colisiones.
+ ~ EventBus.
+ ~ Nivel 1 (sin enemigos ni items).
+ ~ Muñeco principal.
+ ~ Enemigos.
+ ~ Items.
+ ~ Nivel 1 (añadir enemigos e items).
+ ~ Game controllers.
+ ~ Menu classes.

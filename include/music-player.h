@@ -1,6 +1,6 @@
 
-#ifndef __MUSICPLAYER__H__
-#define __MUSICPLAYER__H__ 
+#ifndef __MUSICPLAYER_H__
+#define __MUSICPLAYER_H__ 
 
 #include "common.h"
 #include <SFML/Audio.hpp>

@@ -1,3 +1,4 @@
+
 #ifndef __BGSCROLLER_H__
 #define __BGSCROLLER_H__
 
@@ -7,7 +8,8 @@
 #include <vector>
 #include "camera.h"
 
-class BgScroller :public sf::Drawable {
+
+class BgScroller : public sf::Drawable {
 
 private:
 	DISALLOW_COPY_AND_ASSIGN(BgScroller);
