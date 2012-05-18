@@ -13,12 +13,12 @@ MusicPlayer::~MusicPlayer() {
 }
 
 void MusicPlayer::add(sf::Music& track) {
-	music[size] = &track;
+	music.push_back(&track);
 	size++;
 }
 
 void MusicPlayer::play() {
-	if (playing)
+	if (playing || size == 0)
 		return;
 	playing = true;
 	next();
@@ -32,19 +32,31 @@ void MusicPlayer::next() {
 }
 
 void MusicPlayer::stop() {
-	if(!playing)
+	if(!playing || size == 0)
 		return;
 	playing = false;
 	music[current]->stop();
 }
 
-void MusicPlayer::update() {
+void MusicPlayer::update(float diff) {
 	if(playing && music[current]->getStatus() == sf::SoundSource::Stopped)
 		next();
 }
 
 void MusicPlayer::chooseRandom() {
-	if(playing)
+	if(playing || size == 0)
 		return;
 	current = rand() % size;
+}
+
+int MusicPlayer::getCurrent() {
+	return current;
+}
+
+int MusicPlayer::getSize() {
+	return size;
+}
+
+bool MusicPlayer::isPlaying() {
+	return playing;
 }

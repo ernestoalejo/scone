@@ -14,9 +14,14 @@ public:
 	void add(sf::Music& track);
 	void play();
 	void stop();
-	void update();
+
+	void update(float diff);
 
 	void chooseRandom();
+
+	int getCurrent();
+	int getSize();
+	bool isPlaying();
 
 private:
 	DISALLOW_COPY_AND_ASSIGN(MusicPlayer);
