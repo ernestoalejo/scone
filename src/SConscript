@@ -1,15 +1,52 @@
 
-files = Split("""
-	main.cpp
-	private-main.cpp
-	resources-manager.cpp
-	music-player.cpp
-	level-loader.cpp
-	camera.cpp
-	sprite.cpp
-	bgscroller.cpp
-""")
+import os
+import re
+
+
+
+test_name = re.compile('^.+?_unittest\.cpp$')
+
+appname = 'scone'
+apppath = '#bin'
+
+include_paths = ['#include']
+lib_paths = ['/usr/local/lib']
 
 libs = ['sfml-system', 'sfml-window', 'sfml-graphics', 'sfml-audio']
+srcs = Glob('*.cpp')
+flags = ['-Wall', '-g']
 
-Program('#bin/scone', files, LIBS=libs, CPPPATH='#include', LIBPATH='/usr/local/lib')
+# Command line arguments
+test = ARGUMENTS.get('test', 0)
+gtest = ARGUMENTS.get('gtest_path', '../../gtest-1.6.0')
+production = ARGUMENTS.get('production', 0)
+
+
+# Preparation for the production build
+if int(production):
+	flags.remove('-g')
+	flags.append('-O3')
+
+	srcs = filter(lambda x: str(x).find('/private-main.cpp') == -1, srcs)
+else:
+	srcs = filter(lambda x: str(x).find('/main.cpp') == -1, srcs)
+
+# Preparation for the test build
+if int(test):
+	srcs = filter(lambda x: str(x).find('/main.cpp') == -1, srcs)
+	srcs = filter(lambda x: str(x).find('/private-main.cpp') == -1, srcs)
+	srcs.append(os.path.join(gtest, 'src', 'gtest_main.cc'))
+
+	include_paths.append(os.path.join(gtest, 'include'))
+
+	libs += ['gtest', 'pthread']
+	lib_paths.append(os.path.join(gtest, 'build'))
+
+	appname += '-test'
+else:
+	srcs = filter(lambda x: test_name.match(str(x)) == None, srcs)
+
+# Build the program
+Program(os.path.join(apppath, appname), srcs, CPPPATH=include_paths, LIBS=libs,
+	LIBPATH=lib_paths, CPPFLAGS=flags)
+

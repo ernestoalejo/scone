@@ -1,8 +1,6 @@
+
 #include "level.h"
-#include <iostream>
 
-
-using namespace std;
 
 Level::Level(string name){
 	LevelLoader datos(name);
@@ -19,6 +17,6 @@ void Level::event(const sf::Event& event){
 
 }
 
-void Level::draw(RenderTarget& target,RenderStates states) const {
+void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	
 }

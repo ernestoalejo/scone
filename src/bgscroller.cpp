@@ -3,7 +3,7 @@
 #include <sstream>
 
 BgScroller::BgScroller(ResourcesManager& manager, string name, int size)
-: size(size), posx(0), bgWidth(-1), sprites(size)
+: sprites(size), size(size), posx(0), bgWidth(-1)
 {
 	for(int i = 0; i < size; i++) {
 		stringstream nombre;
