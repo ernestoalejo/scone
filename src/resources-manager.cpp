@@ -87,3 +87,15 @@ ResourcesManager::~ResourcesManager(void) {
 		}
 	}
 }
+
+int ResourcesManager::getTexturesCacheSize() {
+	return textures.size();
+}
+
+int ResourcesManager::getFontsCacheSize() {
+	return fonts.size();
+}
+
+int ResourcesManager::getMusicCacheSize() {
+	return music.size();
+}
