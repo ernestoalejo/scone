@@ -39,11 +39,11 @@ private:
 	/**
 	 * Guarda posicion horizontal.
 	 */
-    float posx;
+  float posx;
 
-    /**
-     * Indica si hay espacio para dibujar la siguiente imagen.
-     */
+  /**
+   * Indica si hay espacio para dibujar la siguiente imagen.
+   */
 	bool drawNext;
 
 	/**
