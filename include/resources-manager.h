@@ -12,6 +12,7 @@ public:
 	ResourcesManager(string);
 	~ResourcesManager(void);
 
+	static ResourcesManager& getInstance();
 	void loadTextures(sf::Sprite& sprite, string name);
 	sf::Music &loadMusic( string name);
 	const sf::Font &loadFont(const string &name);

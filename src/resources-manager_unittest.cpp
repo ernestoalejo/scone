@@ -1,6 +1,8 @@
 #include "resources-manager.h"
 #include "gtest/gtest.h"
 
+extern ResourcesManager* instance;
+
 // Pruebas automatizadas.
 // Imagenes.
 TEST(ResourcesManagerTest, Imagenes){
@@ -39,3 +41,11 @@ TEST(ResourcesManagerTest, Fuentes){
 	EXPECT_EQ(prueba.getFontsCacheSize(), 3);
 }
 
+TEST(ResourcesManagerTest, Instance){
+	ResourcesManager *nulo = NULL;
+	EXPECT_EQ(instance, nulo);
+	ResourcesManager &ins = ResourcesManager::getInstance();
+	EXPECT_EQ(&ins, instance);
+	ResourcesManager &ins2 = ResourcesManager::getInstance();
+	EXPECT_EQ(&ins, &ins2);
+}

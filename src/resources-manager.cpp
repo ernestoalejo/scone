@@ -1,10 +1,45 @@
 #include "resources-manager.h"
 
+ResourcesManager* instance = 0;
+
 //Constructor por defecto
 ResourcesManager::ResourcesManager(string n)
 :datoprivado(n)
 {
 	//vacio.
+}
+
+//Destructor
+ResourcesManager::~ResourcesManager(void) {
+	//Para texturas.
+	{
+		typedef map<string, sf::Texture*>::const_iterator iterator;
+		for(iterator i = textures.begin(); i != textures.end(); ++i){
+			delete i->second;
+		}
+	}
+	//Para musica.
+	{
+		typedef map<string, sf::Music*>::const_iterator iterator;
+		for(iterator i = music.begin(); i != music.end(); ++i){
+			delete i->second;
+		}
+	}
+	//Para fuentes.
+	{
+		typedef map<string, sf::Font*>::const_iterator iterator;
+		for(iterator i = fonts.begin(); i != fonts.end(); ++i){
+			delete i->second;
+		}
+	}
+}
+
+// Esto es un singleton.
+ResourcesManager& ResourcesManager::getInstance(){
+	if(instance == 0){
+		instance = new ResourcesManager("assets");
+	}
+	return *instance;
 }
 
 //Para cargar imagenes en formato ".png"
@@ -60,31 +95,6 @@ const sf::Font &ResourcesManager::loadFont(const string &name){
 		ERROR << "Error cargando fuente " << dir << endl;
 	return *fonts[name];
 
-}
-
-//Destructor
-ResourcesManager::~ResourcesManager(void) {
-	//Para texturas.
-	{
-		typedef map<string, sf::Texture*>::const_iterator iterator;
-		for(iterator i = textures.begin(); i != textures.end(); ++i){
-			delete i->second;
-		}
-	}
-	//Para musica.
-	{
-		typedef map<string, sf::Music*>::const_iterator iterator;
-		for(iterator i = music.begin(); i != music.end(); ++i){
-			delete i->second;
-		}
-	}
-	//Para fuentes.
-	{
-		typedef map<string, sf::Font*>::const_iterator iterator;
-		for(iterator i = fonts.begin(); i != fonts.end(); ++i){
-			delete i->second;
-		}
-	}
 }
 
 int ResourcesManager::getTexturesCacheSize() {

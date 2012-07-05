@@ -1,5 +1,3 @@
-
-
 #include <fstream>
 #include "level-loader.h"
 
@@ -49,7 +47,7 @@ Platform::Platform(string tipo,float x,float y,int w,int h)
 : pos(x,y) , size(w,h)
 {
 	//Vacio
-
+	
 }
 
 sf::Vector2f Platform::getPos(){
