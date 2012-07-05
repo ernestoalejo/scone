@@ -23,11 +23,10 @@ public:
 	sf::Vector2f position();
 
 protected:
-	sf::Vector2f velocity;
-	sf::Texture texture;
 	sf::Sprite sprite;
 
 
 };
 
 #endif
+
