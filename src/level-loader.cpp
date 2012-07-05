@@ -28,8 +28,8 @@ void LevelLoader::Load(string name){            //Funcion carga
 		file >> y;
 		file >> w;
 		file >> h;
-
-		Platform platformtmp(tipo,x,y,w,h);
+		sf::FloatRect rect(x,y,w,h);
+		Platform *platformtmp = new Platform (rect,tipo);
 
 		platforms[i] = platformtmp;
 	}
@@ -37,23 +37,6 @@ void LevelLoader::Load(string name){            //Funcion carga
 	file.close();
 }
 
-vector<Platform> LevelLoader::getPlatform(){               //Devuelve vector
+vector<Platform*> LevelLoader::getPlatform(){               //Devuelve vector
 	return platforms;
-}
-
-// clase Platform
-
-Platform::Platform(string tipo,float x,float y,int w,int h)
-: pos(x,y) , size(w,h)
-{
-	//Vacio
-	
-}
-
-sf::Vector2f Platform::getPos(){
-	return pos;
-}
-
-sf::Vector2f Platform::getSize(){
-	return size;
 }

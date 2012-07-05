@@ -13,7 +13,7 @@ include_paths = ['#include']
 lib_paths = ['/usr/local/lib']
 
 libs = ['sfml-system', 'sfml-window', 'sfml-graphics', 'sfml-audio']
-srcs = Glob('*.cpp')
+srcs = Glob('*.cpp') + Glob('*/*.cpp')
 flags = ['-Wall', '-g']
 
 # Command line arguments

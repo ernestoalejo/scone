@@ -5,6 +5,9 @@
 #include <iostream>
 #include <string>
 
+#include <SFML/Graphics.hpp>
+
+
 using namespace std;
 
 // A macro to disallow the copy constructor and operator= functions

@@ -4,7 +4,7 @@
 
 Level::Level(string name){
 	LevelLoader datos(name);
-	platform = datos.getPlatform();
+	//platform = datos.getPlatform();
 }
 
 void Level::update(float diff){
