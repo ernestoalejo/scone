@@ -6,6 +6,7 @@
 Level::Level(string name){
 	LevelLoader datos(name);
 	platform = datos.getPlatform();
+	levelSize = datos.getLevelSize();
 }
 
 void Level::update(float diff){
@@ -22,4 +23,8 @@ void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 		platform[i]->draw(target, states);
 	}
 	
+}
+
+int Level::getLevelSize(){
+	return levelSize;
 }

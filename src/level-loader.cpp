@@ -20,6 +20,8 @@ void LevelLoader::Load(string name){            //Funcion carga
 	string tipo;
 
 	file >> n;
+	levelSize = n;
+	file >> n;
 
 	platforms.resize(n);
 
@@ -40,4 +42,8 @@ void LevelLoader::Load(string name){            //Funcion carga
 
 vector<Platform*> LevelLoader::getPlatform(){               //Devuelve vector
 	return platforms;
+}
+
+int LevelLoader::getLevelSize(){
+	return levelSize;
 }
