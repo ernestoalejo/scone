@@ -11,7 +11,7 @@ LevelLoader::LevelLoader(string name){          //Constructor
 }
 
 void LevelLoader::Load(string name){            //Funcion carga
-
+	//Carga la informacion del nivel.
 	string dir("data/levels/" + name + "/info.lvl");
 	fstream file(dir.c_str(), fstream::in);
 
@@ -21,6 +21,7 @@ void LevelLoader::Load(string name){            //Funcion carga
 
 	file >> n;
 
+	platforms.resize(n);
 
 	for(int i = 0 ; i < n ; i++){
 		file >> tipo;
