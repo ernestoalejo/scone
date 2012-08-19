@@ -6,8 +6,7 @@
 #ifndef __SPRITE_H__
 #define __SPRITE_H__
 
-#include "common.h"
-#include <SFML/Graphics.hpp>
+#include "scone/common.h"
 
 class Sprite : public sf::Drawable {
 

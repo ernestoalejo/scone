@@ -3,7 +3,7 @@
 // See LICENSE for more info.
 
 #include "sprites/platform.h"
-#include "resources-manager.h"
+#include "scone/resources-manager.h"
 
 Platform::Platform(sf::FloatRect rect, string name)
   : size(rect.width, rect.height) {

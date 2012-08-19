@@ -6,9 +6,8 @@
 #ifndef __CAMERA__H__
 #define __CAMERA__H__
 
-#include "common.h"
-#include <SFML/Graphics.hpp>
-#include "sprite.h"
+#include "scone/common.h"
+#include "scone/sprite.h"
 
 /**
  * La clase camara sirve para que la camara se vaya moviendo y el personaje quede

@@ -5,7 +5,7 @@
 #ifndef __COLLISION_SAT__H__
 #define __COLLISION_SAT__H__
 
-#include "common.h"
+#include "scone/common.h"
 
 namespace collisions {
 

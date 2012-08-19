@@ -5,9 +5,7 @@
 #ifndef __LEVEL_H__
 #define __LEVEL_H__
 
-#include <SFML/Graphics.hpp>
-
-#include "common.h"
+#include "scone/common.h"
 #include "level-loader.h"
 
 

@@ -3,7 +3,7 @@
 // See LICENSE for more info.
 
 
-#include "sprite.h"
+#include "scone/sprite.h"
 
 Sprite::Sprite() {
   // empty

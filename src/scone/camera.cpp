@@ -3,7 +3,7 @@
 // See LICENSE for more info.
 
 
-#include "camera.h"
+#include "scone/camera.h"
 
 Camera::Camera(int end) {
   this->end = end;

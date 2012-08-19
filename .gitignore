@@ -1,5 +1,5 @@
 bin/*
 obj/*
-src/private-main.cpp
+src/scone/private-main.cpp
 .sconsign.dblite
 assets/*

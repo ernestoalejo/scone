@@ -6,10 +6,8 @@
 #ifndef __BGSCROLLER_H__
 #define __BGSCROLLER_H__
 
-#include "common.h"
+#include "scone/common.h"
 #include "resources-manager.h"
-#include <SFML/Graphics.hpp>
-#include <vector>
 #include "camera.h"
 
 /**

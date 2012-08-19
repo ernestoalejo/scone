@@ -2,9 +2,10 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
-#include "resources-manager.h"
-#include "bgscroller.h"
 #include <sstream>
+
+#include "scone/resources-manager.h"
+#include "scone/bgscroller.h"
 
 BgScroller::BgScroller(ResourcesManager& manager, string name, int size)
   : sprites(size), size(size), posx(0), bgWidth(-1) {

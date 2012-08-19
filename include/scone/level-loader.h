@@ -5,7 +5,7 @@
 #ifndef __LEVELLOADER__H__
 #define __LEVELLOADER__H__
 
-#include "common.h"
+#include "scone/common.h"
 #include "sprites/platform.h"
 
 class LevelLoader {

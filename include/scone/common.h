@@ -9,7 +9,9 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <vector>
 
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
 

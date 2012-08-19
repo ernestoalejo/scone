@@ -3,7 +3,8 @@
 // See LICENSE for more info.
 
 #include <fstream>
-#include "level-loader.h"
+
+#include "scone/level-loader.h"
 
 using namespace std;
 

@@ -2,7 +2,7 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
-#include "resources-manager.h"
+#include "scone/resources-manager.h"
 
 ResourcesManager* instance = 0;
 

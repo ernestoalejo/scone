@@ -5,8 +5,8 @@
 #ifndef __SPRITES_PLATFORM_H__
 #define __SPRITES_PLATFORM_H__
 
-#include "common.h"
-#include "sprite.h"
+#include "scone/common.h"
+#include "scone/sprite.h"
 
 class Platform : public Sprite {
 public:

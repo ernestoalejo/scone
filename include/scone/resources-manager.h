@@ -5,10 +5,7 @@
 #ifndef __RESOURCESMANAGER_H__
 #define __RESOURCESMANAGER_H__
 
-#include <SFML/Audio.hpp>
-#include <SFML/Graphics.hpp>
-
-#include "common.h"
+#include "scone/common.h"
 
 /**
  * Organiza los recursos del juego. Carga estos y los maneja.

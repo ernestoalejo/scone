@@ -3,7 +3,7 @@
 // See LICENSE for more info.
 
 
-#include "music-player.h"
+#include "scone/music-player.h"
 
 
 MusicPlayer::MusicPlayer()
