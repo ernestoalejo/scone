@@ -3,14 +3,13 @@
 #include <sstream>
 
 BgScroller::BgScroller(ResourcesManager& manager, string name, int size)
-: sprites(size), size(size), posx(0), bgWidth(-1)
-{
-	for(int i = 0; i < size; i++) {
+	: sprites(size), size(size), posx(0), bgWidth(-1) {
+	for (int i = 0; i < size; i++) {
 		stringstream nombre;
 		nombre << name << "/" << i;
 		manager.loadTextures(sprites[i], nombre.str());
 
-		if(bgWidth < 0) {
+		if (bgWidth < 0) {
 			bgWidth = sprites[i].getLocalBounds().width;
 			halfBgWidth = bgWidth / 2;
 		}
@@ -30,14 +29,14 @@ void BgScroller::update(float diff) {
 	current = (posx / bgWidth);
 
 	drawNext = false;
-	if(sprites[current].getPosition().x + halfBgWidth < posx + SCREEN_WIDTH)
+	if (sprites[current].getPosition().x + halfBgWidth < posx + SCREEN_WIDTH)
 		drawNext = true;
 }
 
 void BgScroller::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(sprites[current]);
-	if(drawNext)
-		target.draw(sprites[current+1]);
+	if (drawNext)
+		target.draw(sprites[current + 1]);
 }
 
 

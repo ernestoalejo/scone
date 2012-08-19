@@ -1,0 +1,31 @@
+
+# Attached brackets
+style=java
+
+# Force tabs to indent code
+indent=force-tab
+
+# Format macros too
+indent-preprocessor
+
+# Commnents inside a function are like any other, indent them
+indent-col1-comments
+
+# Insert padding around operators
+pad-oper
+
+# Add spaces before and after the if's, while's, for's, ...
+# Remove the rest of parens not needed
+pad-header
+unpad-paren
+
+# Align the pointer and reference operators with the type, not
+# the name of the var
+align-pointer=type
+align-reference=type
+
+# Do not make backups of the old files (we have git)
+suffix=none
+
+# Use LF for line endings
+lineend=linux

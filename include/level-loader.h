@@ -4,7 +4,7 @@
 #include "common.h"
 #include "sprites/platform.h"
 
-class LevelLoader{
+class LevelLoader {
 
 public:
 	LevelLoader(string name);

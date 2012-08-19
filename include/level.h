@@ -7,7 +7,7 @@
 #include "level-loader.h"
 
 
-class Level : public Sprite{
+class Level : public Sprite {
 
 public:
 	Level(string name);
@@ -25,4 +25,4 @@ private:
 
 
 
-#endif	
+#endif

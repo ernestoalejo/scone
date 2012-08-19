@@ -1,6 +1,6 @@
 
 #ifndef __MUSICPLAYER_H__
-#define __MUSICPLAYER_H__ 
+#define __MUSICPLAYER_H__
 
 #include "common.h"
 #include <SFML/Audio.hpp>
@@ -30,7 +30,7 @@ private:
 	int current;
 	int size;
 	bool playing;
-	
+
 	void next();
 };
 

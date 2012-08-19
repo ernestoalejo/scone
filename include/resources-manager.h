@@ -36,14 +36,14 @@ public:
 	 * @param name Es el nombre del archivo a cargar.
 	 * @return Música cargada.
 	 */
-	sf::Music &loadMusic( string name);
+	sf::Music& loadMusic(string name);
 
 	/**
 	 * Carga el archivo para las fuentes.
 	 * @param name Es el nombre del archivo a cargar.
 	 * @return Fuente cargada.
 	 */
-	const sf::Font &loadFont(const string &name);
+	const sf::Font& loadFont(const string& name);
 
 	/**
 	 * Obtiene el tamaño de las texturas

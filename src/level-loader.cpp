@@ -5,12 +5,12 @@ using namespace std;
 
 
 //clase LevelLoader
- 
-LevelLoader::LevelLoader(string name){          //Constructor
-	Load(name); 
+
+LevelLoader::LevelLoader(string name) {         //Constructor
+	Load(name);
 }
 
-void LevelLoader::Load(string name){            //Funcion carga
+void LevelLoader::Load(string name) {           //Funcion carga
 	//Carga la informacion del nivel.
 	string dir("data/levels/" + name + "/info.lvl");
 	fstream file(dir.c_str(), fstream::in);
@@ -25,14 +25,14 @@ void LevelLoader::Load(string name){            //Funcion carga
 
 	platforms.resize(n);
 
-	for(int i = 0 ; i < n ; i++){
+	for (int i = 0 ; i < n ; i++) {
 		file >> tipo;
 		file >> x;
 		file >> y;
 		file >> w;
 		file >> h;
-		sf::FloatRect rect(x,y,w,h);
-		Platform *platformtmp = new Platform (rect,tipo);
+		sf::FloatRect rect(x, y, w, h);
+		Platform* platformtmp = new Platform(rect, tipo);
 
 		platforms[i] = platformtmp;
 	}
@@ -40,10 +40,10 @@ void LevelLoader::Load(string name){            //Funcion carga
 	file.close();
 }
 
-vector<Platform*> LevelLoader::getPlatform(){               //Devuelve vector
+vector<Platform*> LevelLoader::getPlatform() {              //Devuelve vector
 	return platforms;
 }
 
-int LevelLoader::getLevelSize(){
+int LevelLoader::getLevelSize() {
 	return levelSize;
 }

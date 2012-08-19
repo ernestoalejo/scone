@@ -11,7 +11,7 @@
 /**
  * Modulo para mover imagenes a partir del fondo.
  */
-class BgScroller :public sf::Drawable {
+class BgScroller : public sf::Drawable {
 
 private:
 	DISALLOW_COPY_AND_ASSIGN(BgScroller);
@@ -39,11 +39,11 @@ private:
 	/**
 	 * Guarda posicion horizontal.
 	 */
-  float posx;
+	float posx;
 
-  /**
-   * Indica si hay espacio para dibujar la siguiente imagen.
-   */
+	/**
+	 * Indica si hay espacio para dibujar la siguiente imagen.
+	 */
 	bool drawNext;
 
 	/**
@@ -65,11 +65,11 @@ public:
 	 * @param name Carga el nombre del recurso.
 	 * @param size Tamaño del recurso.
 	 */
-	 BgScroller(ResourcesManager& manager, string name, int size);
+	BgScroller(ResourcesManager& manager, string name, int size);
 
-	 /**
-	  * Destructor.
-	  */
+	/**
+	 * Destructor.
+	 */
 	~BgScroller();
 
 	/** @inheridDoc */

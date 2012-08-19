@@ -3,8 +3,7 @@
 
 
 MusicPlayer::MusicPlayer()
-: current(-1) , size(0) , playing(false)
-{
+	: current(-1) , size(0) , playing(false) {
 	// vacio
 }
 
@@ -32,19 +31,19 @@ void MusicPlayer::next() {
 }
 
 void MusicPlayer::stop() {
-	if(!playing || size == 0)
+	if (!playing || size == 0)
 		return;
 	playing = false;
 	music[current]->stop();
 }
 
 void MusicPlayer::update(float diff) {
-	if(playing && music[current]->getStatus() == sf::SoundSource::Stopped)
+	if (playing && music[current]->getStatus() == sf::SoundSource::Stopped)
 		next();
 }
 
 void MusicPlayer::chooseRandom() {
-	if(playing || size == 0)
+	if (playing || size == 0)
 		return;
 	current = rand() % size;
 }

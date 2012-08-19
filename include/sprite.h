@@ -6,13 +6,13 @@
 #include <SFML/Graphics.hpp>
 
 class Sprite : public sf::Drawable {
-	
+
 private:
 	DISALLOW_COPY_AND_ASSIGN(Sprite);
-	
+
 public:
 	Sprite();
-	
+
 	// Implement the sf::Drawable interface
 	virtual	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 

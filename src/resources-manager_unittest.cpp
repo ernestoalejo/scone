@@ -5,7 +5,7 @@ extern ResourcesManager* instance;
 
 // Pruebas automatizadas.
 // Imagenes.
-TEST(ResourcesManagerTest, Imagenes){
+TEST(ResourcesManagerTest, Imagenes) {
 	sf::Sprite a;
 	ResourcesManager prueba("test");
 	EXPECT_EQ(prueba.getTexturesCacheSize(), 0);
@@ -18,7 +18,7 @@ TEST(ResourcesManagerTest, Imagenes){
 }
 
 // Musica.
-TEST(ResourcesManagerTest, Musica){
+TEST(ResourcesManagerTest, Musica) {
 	ResourcesManager prueba("test");
 	EXPECT_EQ(prueba.getMusicCacheSize(), 0);
 	prueba.loadMusic("test");
@@ -30,7 +30,7 @@ TEST(ResourcesManagerTest, Musica){
 }
 
 // Fuentes.
-TEST(ResourcesManagerTest, Fuentes){
+TEST(ResourcesManagerTest, Fuentes) {
 	ResourcesManager prueba("test");
 	EXPECT_EQ(prueba.getFontsCacheSize(), 0);
 	prueba.loadFont("test");
@@ -41,11 +41,11 @@ TEST(ResourcesManagerTest, Fuentes){
 	EXPECT_EQ(prueba.getFontsCacheSize(), 3);
 }
 
-TEST(ResourcesManagerTest, Instance){
-	ResourcesManager *nulo = NULL;
+TEST(ResourcesManagerTest, Instance) {
+	ResourcesManager* nulo = NULL;
 	EXPECT_EQ(instance, nulo);
-	ResourcesManager &ins = ResourcesManager::getInstance();
+	ResourcesManager& ins = ResourcesManager::getInstance();
 	EXPECT_EQ(&ins, instance);
-	ResourcesManager &ins2 = ResourcesManager::getInstance();
+	ResourcesManager& ins2 = ResourcesManager::getInstance();
 	EXPECT_EQ(&ins, &ins2);
 }
