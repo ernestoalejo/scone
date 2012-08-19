@@ -2,25 +2,25 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
+#ifndef INCLUDE_SCONE_CAMERA_H_
+#define INCLUDE_SCONE_CAMERA_H_
 
-#ifndef __CAMERA__H__
-#define __CAMERA__H__
 
 #include "scone/common.h"
 #include "scone/sprite.h"
+
 
 /**
  * La clase camara sirve para que la camara se vaya moviendo y el personaje quede
  * en el centro.
  */
 class Camera : public sf::Drawable {
-
 public:
   /**
    * Constructor por defecto.
    * @param end El valor maximo hasta donde la camara va a llegar.
    */
-  Camera(int end);
+  explicit Camera(int end);
 
   /**
    * Actualiza la camara para que siga al centro de la imagen y no se pase del
@@ -39,9 +39,8 @@ public:
   /** @return El valor de la X que indica la posicion */
   int getX();
 
-private:
-  DISALLOW_COPY_AND_ASSIGN(Camera);
 
+private:
   /**
    * Este es el objeto al que la camara va a seguir.
    */
@@ -58,5 +57,8 @@ private:
    */
   sf::View view;
 
+  DISALLOW_COPY_AND_ASSIGN(Camera);
 };
-#endif
+
+
+#endif  // INCLUDE_SCONE_CAMERA_H_

@@ -6,12 +6,14 @@
 #ifndef INCLUDE_SCONE_BGSCROLLER_H_
 #define INCLUDE_SCONE_BGSCROLLER_H_
 
+
 #include <string>
 #include <vector>
 
 #include "scone/common.h"
 #include "scone/resources-manager.h"
 #include "scone/camera.h"
+
 
 /**
  * Modulo para mover imagenes a partir del fondo.
@@ -44,6 +46,7 @@ public:
    * @param camera Camara a la que se le sigue.
    */
   void follow(Camera* camera);
+
 
 private:
   /**
@@ -88,5 +91,6 @@ private:
 
   DISALLOW_COPY_AND_ASSIGN(BgScroller);
 };
+
 
 #endif  // INCLUDE_SCONE_BGSCROLLER_H_
