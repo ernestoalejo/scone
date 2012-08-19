@@ -3,59 +3,59 @@
 
 
 MusicPlayer::MusicPlayer()
-	: current(-1) , size(0) , playing(false) {
-	// vacio
+  : current(-1) , size(0) , playing(false) {
+  // vacio
 }
 
 MusicPlayer::~MusicPlayer() {
-	// vacio
+  // vacio
 }
 
 void MusicPlayer::add(sf::Music& track) {
-	music.push_back(&track);
-	size++;
+  music.push_back(&track);
+  size++;
 }
 
 void MusicPlayer::play() {
-	if (playing || size == 0)
-		return;
-	playing = true;
-	next();
+  if (playing || size == 0)
+    return;
+  playing = true;
+  next();
 }
 
 void MusicPlayer::next() {
-	current++;
-	if (current == size)
-		current = 0;
-	music[current]->play();
+  current++;
+  if (current == size)
+    current = 0;
+  music[current]->play();
 }
 
 void MusicPlayer::stop() {
-	if (!playing || size == 0)
-		return;
-	playing = false;
-	music[current]->stop();
+  if (!playing || size == 0)
+    return;
+  playing = false;
+  music[current]->stop();
 }
 
 void MusicPlayer::update(float diff) {
-	if (playing && music[current]->getStatus() == sf::SoundSource::Stopped)
-		next();
+  if (playing && music[current]->getStatus() == sf::SoundSource::Stopped)
+    next();
 }
 
 void MusicPlayer::chooseRandom() {
-	if (playing || size == 0)
-		return;
-	current = rand() % size;
+  if (playing || size == 0)
+    return;
+  current = rand() % size;
 }
 
 int MusicPlayer::getCurrent() {
-	return current;
+  return current;
 }
 
 int MusicPlayer::getSize() {
-	return size;
+  return size;
 }
 
 bool MusicPlayer::isPlaying() {
-	return playing;
+  return playing;
 }

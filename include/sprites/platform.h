@@ -6,12 +6,12 @@
 
 class Platform : public Sprite {
 public:
-	Platform(sf::FloatRect rect, string name);
-	~Platform();
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+  Platform(sf::FloatRect rect, string name);
+  ~Platform();
+  void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
-	sf::Vector2f size;
+  sf::Vector2f size;
 
 };
 

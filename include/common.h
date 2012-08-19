@@ -14,8 +14,8 @@ using namespace std;
 // A macro to disallow the copy constructor and operator= functions
 // This should be used in the private: declarations for a class
 #define DISALLOW_COPY_AND_ASSIGN(TypeName) \
-	TypeName(const TypeName&);               \
-	void operator=(const TypeName&)
+  TypeName(const TypeName&);               \
+  void operator=(const TypeName&)
 
 const float SCREEN_WIDTH = 640;
 const float SCREEN_HEIGHT = 480;

@@ -13,47 +13,47 @@
 class Camera : public sf::Drawable {
 
 public:
-	/**
-	 * Constructor por defecto.
-	 * @param end El valor maximo hasta donde la camara va a llegar.
-	 */
-	Camera(int end);
+  /**
+   * Constructor por defecto.
+   * @param end El valor maximo hasta donde la camara va a llegar.
+   */
+  Camera(int end);
 
-	/**
-	 * Actualiza la camara para que siga al centro de la imagen y no se pase del
-	 * final de la imagen.
-	 */
-	void update(float diff);
+  /**
+   * Actualiza la camara para que siga al centro de la imagen y no se pase del
+   * final de la imagen.
+   */
+  void update(float diff);
 
-	/** @inheritDoc */
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+  /** @inheritDoc */
+  void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-	/**
-	 * Guarda la imagen que tiene que seguir la camara.
-	 */
-	void follow(Sprite& sprite);
+  /**
+   * Guarda la imagen que tiene que seguir la camara.
+   */
+  void follow(Sprite& sprite);
 
-	/** @return El valor de la X que indica la posicion */
-	int getX();
+  /** @return El valor de la X que indica la posicion */
+  int getX();
 
 private:
-	DISALLOW_COPY_AND_ASSIGN(Camera);
+  DISALLOW_COPY_AND_ASSIGN(Camera);
 
-	/**
-	 * Este es el objeto al que la camara va a seguir.
-	 */
-	Sprite* sprite;
+  /**
+   * Este es el objeto al que la camara va a seguir.
+   */
+  Sprite* sprite;
 
-	/**
-	 * Indica donde esta el fin para que la camara deje de moverse y no se salga
-	 * del fondo.
-	 */
-	int end;
+  /**
+   * Indica donde esta el fin para que la camara deje de moverse y no se salga
+   * del fondo.
+   */
+  int end;
 
-	/**
-	 * Indica lo que se esta viendo en la camara.
-	 */
-	sf::View view;
+  /**
+   * Indica lo que se esta viendo en la camara.
+   */
+  sf::View view;
 
 };
 #endif

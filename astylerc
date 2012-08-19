@@ -2,8 +2,9 @@
 # Attached brackets
 style=java
 
-# Force tabs to indent code
-indent=force-tab
+# Force spaces to indent code
+indent=spaces=2
+convert-tabs
 
 # Format macros too
 indent-preprocessor
@@ -29,3 +30,6 @@ suffix=none
 
 # Use LF for line endings
 lineend=linux
+
+# Display only changed files
+formatted

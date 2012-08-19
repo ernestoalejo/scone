@@ -2,20 +2,20 @@
 #include "sprite.h"
 
 Sprite::Sprite() {
-	// empty
+  // empty
 }
 
 void Sprite::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-	target.draw(sprite);
+  target.draw(sprite);
 }
 
 void Sprite::update(float diff) {
 }
 
 void Sprite::event(const sf::Event& event) {
-	// empty
+  // empty
 }
 
 sf::Vector2f Sprite::position() {
-	return sprite.getPosition();
+  return sprite.getPosition();
 }

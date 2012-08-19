@@ -7,37 +7,37 @@ namespace collisions {
 
 
 struct Circle {
-	sf::Vector2f center;
-	float radio;
+  sf::Vector2f center;
+  float radio;
 };
 
 struct Rect {
-	sf::Vector2f pos;
-	sf::Vector2f size;
+  sf::Vector2f pos;
+  sf::Vector2f size;
 
-	/**
-	 * Matriz 3x3 que guarda las rotaciones y las escalas
-	 */
-	sf::Transform trans;
+  /**
+   * Matriz 3x3 que guarda las rotaciones y las escalas
+   */
+  sf::Transform trans;
 };
 
 struct SATInfo {
-	bool collides;
+  bool collides;
 
-	/**
-	 * Vector que indica la direccion y sentido para que el objeto deje de colisionar
-	 */
-	sf::Vector2f direccion;
+  /**
+   * Vector que indica la direccion y sentido para que el objeto deje de colisionar
+   */
+  sf::Vector2f direccion;
 
-	/**
-	 * Es el tamaño del espacio que hay hasta que dejen de colisionar los dos objetos
-	 */
-	float espacio;
+  /**
+   * Es el tamaño del espacio que hay hasta que dejen de colisionar los dos objetos
+   */
+  float espacio;
 
-	/**
-	 * Si restas este vector al primer objeto sale de la colision
-	 */
-	sf::Vector2f correccion;
+  /**
+   * Si restas este vector al primer objeto sale de la colision
+   */
+  sf::Vector2f correccion;
 };
 
 /**

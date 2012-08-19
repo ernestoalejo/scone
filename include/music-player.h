@@ -8,30 +8,30 @@
 
 class MusicPlayer {
 public:
-	MusicPlayer();
-	~MusicPlayer();
+  MusicPlayer();
+  ~MusicPlayer();
 
-	void add(sf::Music& track);
-	void play();
-	void stop();
+  void add(sf::Music& track);
+  void play();
+  void stop();
 
-	void update(float diff);
+  void update(float diff);
 
-	void chooseRandom();
+  void chooseRandom();
 
-	int getCurrent();
-	int getSize();
-	bool isPlaying();
+  int getCurrent();
+  int getSize();
+  bool isPlaying();
 
 private:
-	DISALLOW_COPY_AND_ASSIGN(MusicPlayer);
+  DISALLOW_COPY_AND_ASSIGN(MusicPlayer);
 
-	vector <sf::Music*> music;
-	int current;
-	int size;
-	bool playing;
+  vector <sf::Music*> music;
+  int current;
+  int size;
+  bool playing;
 
-	void next();
+  void next();
 };
 
 
