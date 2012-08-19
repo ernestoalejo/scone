@@ -2,18 +2,20 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
-#ifndef __COLLISION_SAT__H__
-#define __COLLISION_SAT__H__
+#ifndef INCLUDE_COLLISIONS_SAT_H_
+#define INCLUDE_COLLISIONS_SAT_H_
+
 
 #include "scone/common.h"
 
-namespace collisions {
 
+namespace collisions {
 
 struct Circle {
   sf::Vector2f center;
   float radio;
 };
+
 
 struct Rect {
   sf::Vector2f pos;
@@ -24,6 +26,7 @@ struct Rect {
    */
   sf::Transform trans;
 };
+
 
 struct SATInfo {
   bool collides;
@@ -44,6 +47,7 @@ struct SATInfo {
   sf::Vector2f correccion;
 };
 
+
 /**
  * Comprueba si colisionan dos circulos
  * @param a Circulo 1.
@@ -51,6 +55,7 @@ struct SATInfo {
  * @return La informacion de la colision
  */
 SATInfo SATCircles(const Circle& a, const Circle& b);
+
 
 /**
  * Comprueba si colisionan dos rectangulos
@@ -61,6 +66,7 @@ SATInfo SATCircles(const Circle& a, const Circle& b);
  */
 SATInfo SATRects(const Rect& a, const Rect& b, bool aligned);
 
+
 /**
  * Comprueba si colisionan un circulo y un rectangulo
  * @param a Circulo.
@@ -68,7 +74,6 @@ SATInfo SATRects(const Rect& a, const Rect& b, bool aligned);
  * @return La informacion de la colision
  */
 SATInfo SATCircleRect(const Circle& a, const Rect& b);
+};
 
-}
-
-#endif
+#endif  // INCLUDE_COLLISIONS_SAT_H_
