@@ -2,9 +2,11 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
+#ifndef INCLUDE_SCONE_MUSIC_PLAYER_H_
+#define INCLUDE_SCONE_MUSIC_PLAYER_H_
 
-#ifndef __MUSICPLAYER_H__
-#define __MUSICPLAYER_H__
+
+#include <vector>
 
 #include "scone/common.h"
 
@@ -26,18 +28,17 @@ public:
   int getSize();
   bool isPlaying();
 
-private:
-  DISALLOW_COPY_AND_ASSIGN(MusicPlayer);
 
+private:
   vector <sf::Music*> music;
   int current;
   int size;
   bool playing;
 
   void next();
+
+  DISALLOW_COPY_AND_ASSIGN(MusicPlayer);
 };
 
 
-
-
-#endif
+#endif  // INCLUDE_SCONE_MUSIC_PLAYER_H_

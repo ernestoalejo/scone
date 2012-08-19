@@ -2,8 +2,8 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
-
 #include "scone/music-player.h"
+#include "scone/rand.h"
 
 
 MusicPlayer::MusicPlayer()
@@ -11,14 +11,17 @@ MusicPlayer::MusicPlayer()
   // vacio
 }
 
+
 MusicPlayer::~MusicPlayer() {
   // vacio
 }
+
 
 void MusicPlayer::add(sf::Music& track) {
   music.push_back(&track);
   size++;
 }
+
 
 void MusicPlayer::play() {
   if (playing || size == 0)
@@ -27,12 +30,14 @@ void MusicPlayer::play() {
   next();
 }
 
+
 void MusicPlayer::next() {
   current++;
   if (current == size)
     current = 0;
   music[current]->play();
 }
+
 
 void MusicPlayer::stop() {
   if (!playing || size == 0)
@@ -41,24 +46,29 @@ void MusicPlayer::stop() {
   music[current]->stop();
 }
 
+
 void MusicPlayer::update(float diff) {
   if (playing && music[current]->getStatus() == sf::SoundSource::Stopped)
     next();
 }
 
+
 void MusicPlayer::chooseRandom() {
   if (playing || size == 0)
     return;
-  current = rand() % size;
+  current = Rand(size);
 }
+
 
 int MusicPlayer::getCurrent() {
   return current;
 }
 
+
 int MusicPlayer::getSize() {
   return size;
 }
+
 
 bool MusicPlayer::isPlaying() {
   return playing;
