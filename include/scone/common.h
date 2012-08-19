@@ -10,6 +10,7 @@
 #include <string>
 #include <cmath>
 #include <vector>
+#include <fstream>
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
