@@ -1,3 +1,7 @@
+
+// Copyright 2012 The Scone authors.
+// See LICENSE for more info.
+
 #ifndef __RESOURCESMANAGER_H__
 #define __RESOURCESMANAGER_H__
 

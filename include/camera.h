@@ -1,4 +1,8 @@
 
+// Copyright 2012 The Scone authors.
+// See LICENSE for more info.
+
+
 #ifndef __CAMERA__H__
 #define __CAMERA__H__
 

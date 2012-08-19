@@ -1,4 +1,8 @@
 
+// Copyright 2012 The Scone authors.
+// See LICENSE for more info.
+
+
 #ifndef __SPRITE_H__
 #define __SPRITE_H__
 

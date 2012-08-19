@@ -1,3 +1,7 @@
+
+// Copyright 2012 The Scone authors.
+// See LICENSE for more info.
+
 #include "music-player.h"
 #include "gtest/gtest.h"
 

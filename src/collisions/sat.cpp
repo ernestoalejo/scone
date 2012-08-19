@@ -1,4 +1,8 @@
 
+// Copyright 2012 The Scone authors.
+// See LICENSE for more info.
+
+
 #include "collisions/sat.h"
 
 using namespace collisions;

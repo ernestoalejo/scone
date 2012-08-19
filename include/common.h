@@ -1,4 +1,8 @@
 
+// Copyright 2012 The Scone authors.
+// See LICENSE for more info.
+
+
 #ifndef __COMMON_H__
 #define __COMMON_H__
 

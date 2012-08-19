@@ -1,3 +1,7 @@
+
+// Copyright 2012 The Scone authors.
+// See LICENSE for more info.
+
 #include "sprites/platform.h"
 #include "resources-manager.h"
 

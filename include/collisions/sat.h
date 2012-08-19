@@ -1,3 +1,7 @@
+
+// Copyright 2012 The Scone authors.
+// See LICENSE for more info.
+
 #ifndef __COLLISION_SAT__H__
 #define __COLLISION_SAT__H__
 

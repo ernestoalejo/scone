@@ -1,4 +1,8 @@
 
+// Copyright 2012 The Scone authors.
+// See LICENSE for more info.
+
+
 #ifndef __MUSICPLAYER_H__
 #define __MUSICPLAYER_H__
 

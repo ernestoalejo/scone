@@ -1,3 +1,7 @@
+
+// Copyright 2012 The Scone authors.
+// See LICENSE for more info.
+
 #ifndef __SPRITES_PLATFORM_H__
 #define __SPRITES_PLATFORM_H__
 

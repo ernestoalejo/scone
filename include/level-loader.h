@@ -1,3 +1,7 @@
+
+// Copyright 2012 The Scone authors.
+// See LICENSE for more info.
+
 #ifndef __LEVELLOADER__H__
 #define __LEVELLOADER__H__
 
