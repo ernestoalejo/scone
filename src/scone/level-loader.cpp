@@ -2,21 +2,18 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
-#include <fstream>
+#include <string>
+#include <vector>
 
 #include "scone/level-loader.h"
 
-using namespace std;
 
-
-//clase LevelLoader
-
-LevelLoader::LevelLoader(string name) {         //Constructor
+LevelLoader::LevelLoader(string name) {
   Load(name);
 }
 
-void LevelLoader::Load(string name) {           //Funcion carga
-  //Carga la informacion del nivel.
+void LevelLoader::Load(string name) {
+  // Carga la informacion del nivel.
   string dir("data/levels/" + name + "/info.lvl");
   fstream file(dir.c_str(), fstream::in);
 
@@ -45,7 +42,7 @@ void LevelLoader::Load(string name) {           //Funcion carga
   file.close();
 }
 
-vector<Platform*> LevelLoader::getPlatform() {              //Devuelve vector
+vector<Platform*> LevelLoader::getPlatform() {
   return platforms;
 }
 
