@@ -2,10 +2,15 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
-#ifndef __RESOURCESMANAGER_H__
-#define __RESOURCESMANAGER_H__
+#ifndef INCLUDE_SCONE_RESOURCES_MANAGER_H_
+#define INCLUDE_SCONE_RESOURCES_MANAGER_H_
+
+
+#include <map>
+#include <string>
 
 #include "scone/common.h"
+
 
 /**
  * Organiza los recursos del juego. Carga estos y los maneja.
@@ -16,7 +21,7 @@ public:
    * Constructor
    * @param n Dirección donde se encuentran los datos. Carpeta base.
    */
-  ResourcesManager(string n);
+  explicit ResourcesManager(string n);
   ~ResourcesManager(void);
 
   /**
@@ -61,10 +66,8 @@ public:
    */
   int getMusicCacheSize();
 
+
 private:
-  DISALLOW_COPY_AND_ASSIGN(ResourcesManager);
-
-
   /**
    * Es la carpeta para el constructor.
    */
@@ -73,6 +76,9 @@ private:
   map<string, sf::Texture*> textures;
   map<string, sf::Music*> music;
   map<string, sf::Font*> fonts;
+
+  DISALLOW_COPY_AND_ASSIGN(ResourcesManager);
 };
 
-#endif
+
+#endif  // INCLUDE_SCONE_RESOURCES_MANAGER_H_

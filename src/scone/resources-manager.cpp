@@ -2,33 +2,41 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
+#include <map>
+#include <string>
+
 #include "scone/resources-manager.h"
+
 
 ResourcesManager* instance = 0;
 
-//Constructor por defecto
+
+// Constructor por defecto
 ResourcesManager::ResourcesManager(string n)
   : datoprivado(n) {
-  //vacio.
+  // vacio.
 }
 
-//Destructor
+
+// Destructor
 ResourcesManager::~ResourcesManager(void) {
-  //Para texturas.
+  // Para texturas.
   {
     typedef map<string, sf::Texture*>::const_iterator iterator;
     for (iterator i = textures.begin(); i != textures.end(); ++i) {
       delete i->second;
     }
   }
-  //Para musica.
+
+  // Para musica.
   {
     typedef map<string, sf::Music*>::const_iterator iterator;
     for (iterator i = music.begin(); i != music.end(); ++i) {
       delete i->second;
     }
   }
-  //Para fuentes.
+
+  // Para fuentes.
   {
     typedef map<string, sf::Font*>::const_iterator iterator;
     for (iterator i = fonts.begin(); i != fonts.end(); ++i) {
@@ -37,15 +45,18 @@ ResourcesManager::~ResourcesManager(void) {
   }
 }
 
+
 // Esto es un singleton.
 ResourcesManager& ResourcesManager::getInstance() {
   if (instance == 0) {
     instance = new ResourcesManager("assets");
   }
+
   return *instance;
 }
 
-//Para cargar imagenes en formato ".png"
+
+// Para cargar imagenes en formato ".png"
 void ResourcesManager::loadTextures(sf::Sprite& sprite, string name) {
   sf::Texture* objetotextura = 0;
 
@@ -69,9 +80,9 @@ void ResourcesManager::loadTextures(sf::Sprite& sprite, string name) {
   sprite.setOrigin(bounds.width / 2, bounds.height / 2);
 }
 
-//Para cargar musica en formato ".ogg"
-sf::Music& ResourcesManager::loadMusic(string name) {
 
+// Para cargar musica en formato ".ogg"
+sf::Music& ResourcesManager::loadMusic(string name) {
   if (music.count(name) > 0)
     return *music[name];
 
@@ -84,29 +95,34 @@ sf::Music& ResourcesManager::loadMusic(string name) {
   return *music[name];
 }
 
-//Para cargar fonts en formato ".ttf"
+
+// Para cargar fonts en formato ".ttf"
 const sf::Font& ResourcesManager::loadFont(const string& name) {
   if (fonts.count(name) > 0) {
     return *fonts[name];
   }
-  //Si no esta cargado, lo carga desde disco.
+
+  // Si no esta cargado, lo carga desde disco.
   LOG << " * Cargando fuentes " << name << "..." << endl;
 
   fonts[name] = new sf::Font();
   string dir(datoprivado + "/fonts/" + name + ".ttf");
   if (!fonts[name]->loadFromFile(dir))
     ERROR << "Error cargando fuente " << dir << endl;
-  return *fonts[name];
 
+  return *fonts[name];
 }
+
 
 int ResourcesManager::getTexturesCacheSize() {
   return textures.size();
 }
 
+
 int ResourcesManager::getFontsCacheSize() {
   return fonts.size();
 }
+
 
 int ResourcesManager::getMusicCacheSize() {
   return music.size();
