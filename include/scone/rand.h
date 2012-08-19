@@ -9,4 +9,4 @@
 int Rand(int n);
 
 
-#endif
+#endif  // INCLUDE_SCONE_RAND_H_
