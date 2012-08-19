@@ -2,6 +2,7 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
+#include <string>
 
 #include "scone/level.h"
 
@@ -14,19 +15,17 @@ Level::Level(string name) {
 }
 
 void Level::update(float diff) {
-
+  // vacio
 }
 
 void Level::event(const sf::Event& event) {
-
+  // vacio
 }
 
 void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-
   for (unsigned int i = 0; i < platform.size(); i++) {
     platform[i]->draw(target, states);
   }
-
 }
 
 int Level::getLevelSize() {

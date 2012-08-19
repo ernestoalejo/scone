@@ -2,29 +2,33 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
-#ifndef __LEVEL_H__
-#define __LEVEL_H__
+#ifndef INCLUDE_SCONE_LEVEL_H_
+#define INCLUDE_SCONE_LEVEL_H_
+
+
+#include <string>
+#include <vector>
 
 #include "scone/common.h"
-#include "level-loader.h"
+#include "scone/level-loader.h"
 
 
 class Level : public Sprite {
-
 public:
-  Level(string name);
+  explicit Level(string name);
+
   void update(float diff);
   void event(const sf::Event& event);
   void draw(sf::RenderTarget& target, sf::RenderStates states) const;
   int getLevelSize();
 
+
 private:
-  DISALLOW_COPY_AND_ASSIGN(Level);
   vector<Platform*> platform;
   int levelSize;
 
+  DISALLOW_COPY_AND_ASSIGN(Level);
 };
 
 
-
-#endif
+#endif  // INCLUDE_SCONE_LEVEL_H_
