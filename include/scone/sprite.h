@@ -3,16 +3,14 @@
 // See LICENSE for more info.
 
 
-#ifndef __SPRITE_H__
-#define __SPRITE_H__
+#ifndef INCLUDE_SCONE_SPRITE_H_
+#define INCLUDE_SCONE_SPRITE_H_
+
 
 #include "scone/common.h"
 
+
 class Sprite : public sf::Drawable {
-
-private:
-  DISALLOW_COPY_AND_ASSIGN(Sprite);
-
 public:
   Sprite();
 
@@ -25,11 +23,15 @@ public:
 
   sf::Vector2f position();
 
+
 protected:
   sf::Sprite sprite;
 
 
+private:
+  DISALLOW_COPY_AND_ASSIGN(Sprite);
 };
 
-#endif
+
+#endif  // INCLUDE_SCONE_SPRITE_H_
 
