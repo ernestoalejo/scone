@@ -3,21 +3,49 @@
 // See LICENSE for more info.
 
 
-#ifndef __BGSCROLLER_H__
-#define __BGSCROLLER_H__
+#ifndef INCLUDE_SCONE_BGSCROLLER_H_
+#define INCLUDE_SCONE_BGSCROLLER_H_
+
+#include <string>
+#include <vector>
 
 #include "scone/common.h"
-#include "resources-manager.h"
-#include "camera.h"
+#include "scone/resources-manager.h"
+#include "scone/camera.h"
 
 /**
  * Modulo para mover imagenes a partir del fondo.
  */
 class BgScroller : public sf::Drawable {
+public:
+  /**
+   * Constructor.
+   * @param name Carga el nombre del recurso.
+   * @param size Tamaño del recurso.
+   */
+  BgScroller(string name, int size);
+
+  /**
+   * Destructor.
+   */
+  ~BgScroller();
+
+  /** @inheridDoc */
+  void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+  /**
+   * Actualiza fondo.
+   * @param diff cantidad de segundos pasados tras el anterior fondo.
+   */
+  void update(float diff);
+
+  /**
+   * Asigna a la camara.
+   * @param camera Camara a la que se le sigue.
+   */
+  void follow(Camera* camera);
 
 private:
-  DISALLOW_COPY_AND_ASSIGN(BgScroller);
-
   /**
    * Vector de imagenes.
    */
@@ -58,36 +86,7 @@ private:
    */
   float halfBgWidth;
 
-
-public:
-
-  /**
-   * Constructor.
-   * @param manager Carga un recurso.
-   * @param name Carga el nombre del recurso.
-   * @param size Tamaño del recurso.
-   */
-  BgScroller(ResourcesManager& manager, string name, int size);
-
-  /**
-   * Destructor.
-   */
-  ~BgScroller();
-
-  /** @inheridDoc */
-  void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
-  /**
-   * Actualiza fondo.
-   * @param diff cantidad de segundos pasados tras el anterior fondo.
-   */
-  void update(float diff);
-
-  /**
-   * Asigna a la camara.
-   * @param camera Camara a la que se le sigue.
-   */
-  void follow(Camera& camera);
+  DISALLOW_COPY_AND_ASSIGN(BgScroller);
 };
 
-#endif
+#endif  // INCLUDE_SCONE_BGSCROLLER_H_

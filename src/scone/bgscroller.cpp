@@ -3,16 +3,18 @@
 // See LICENSE for more info.
 
 #include <sstream>
+#include <string>
 
 #include "scone/resources-manager.h"
 #include "scone/bgscroller.h"
 
-BgScroller::BgScroller(ResourcesManager& manager, string name, int size)
+
+BgScroller::BgScroller(string name, int size)
   : sprites(size), size(size), posx(0), bgWidth(-1) {
   for (int i = 0; i < size; i++) {
     stringstream nombre;
     nombre << name << "/" << i;
-    manager.loadTextures(sprites[i], nombre.str());
+    ResourcesManager::getInstance().loadTextures(sprites[i], nombre.str());
 
     if (bgWidth < 0) {
       bgWidth = sprites[i].getLocalBounds().width;
@@ -29,7 +31,7 @@ BgScroller::~BgScroller() {
 
 void BgScroller::update(float diff) {
   posx = camera->getX();
-  //posx+=0.1;
+  // posx+=0.1;
 
   current = (posx / bgWidth);
 
@@ -45,6 +47,6 @@ void BgScroller::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 }
 
 
-void BgScroller::follow(Camera& camera) {
-  this->camera = &camera;
+void BgScroller::follow(Camera* camera) {
+  this->camera = camera;
 }
