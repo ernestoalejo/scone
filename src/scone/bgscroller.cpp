@@ -2,7 +2,6 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
-#include <sstream>
 #include <string>
 
 #include "scone/resources-manager.h"
