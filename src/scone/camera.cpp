@@ -7,6 +7,7 @@
 
 Camera::Camera(int end) {
   this->end = end;
+  view.reset(sf::FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
 }
 
 
@@ -34,6 +35,6 @@ void Camera::follow(Sprite& sprite) {
   this->sprite = &sprite;
 }
 
-int Camera::getX() {
-  return view.getCenter().x - SCREEN_WIDTH / 2;
+float Camera::getX() const {
+  return view.getCenter().x - HALF_SCREEN_WIDTH;
 }

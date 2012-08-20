@@ -37,7 +37,7 @@ public:
   void follow(Sprite& sprite);
 
   /** @return El valor de la X que indica la posicion */
-  int getX();
+  float getX() const;
 
 
 private:

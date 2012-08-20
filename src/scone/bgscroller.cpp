@@ -9,7 +9,7 @@
 
 
 BgScroller::BgScroller(string name, int size)
-  : sprites(size), size(size), posx(0), bgWidth(-1) {
+  : sprites(size), size(size), bgWidth(-1) {
   for (int i = 0; i < size; i++) {
     stringstream nombre;
     nombre << name << "/" << i;
@@ -29,8 +29,7 @@ BgScroller::~BgScroller() {
 }
 
 void BgScroller::update(float diff) {
-  posx = camera->getX();
-  // posx+=0.1;
+  float posx = camera->getX();
 
   current = (posx / bgWidth);
 
@@ -46,6 +45,6 @@ void BgScroller::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 }
 
 
-void BgScroller::follow(Camera* camera) {
-  this->camera = camera;
+void BgScroller::follow(const Camera& camera) {
+  this->camera = &camera;
 }

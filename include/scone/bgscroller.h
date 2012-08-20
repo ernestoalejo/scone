@@ -45,7 +45,7 @@ public:
    * Asigna a la camara.
    * @param camera Camara a la que se le sigue.
    */
-  void follow(Camera* camera);
+  void follow(const Camera& camera);
 
 
 private:
@@ -67,12 +67,7 @@ private:
   /**
    * Carga la camara.
    */
-  Camera* camera;
-
-  /**
-   * Guarda posicion horizontal.
-   */
-  float posx;
+  const Camera* camera;
 
   /**
    * Indica si hay espacio para dibujar la siguiente imagen.
