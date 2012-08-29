@@ -9,6 +9,12 @@
 #include "scone/sprite.h"
 
 
+enum CharacterState {
+  WALK,
+  JUMP,
+};
+
+
 class Character : public Sprite {
 public:
   Character();
@@ -18,9 +24,10 @@ public:
 
 private:
   sf::Vector2f vel_, target_;
+  CharacterState state_;
 
   DISALLOW_COPY_AND_ASSIGN(Character);
 };
 
 
-#endif
+#endif  // INCLUDE_SPRITES_CHARACTER_H_

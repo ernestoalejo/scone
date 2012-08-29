@@ -10,22 +10,25 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-#include <string>
+#include <algorithm>
 #include <cmath>
-#include <vector>
 #include <fstream>   // NOLINT(readability/streams)
 #include <iostream>  // NOLINT(readability/streams)
 #include <sstream>   // NOLINT(readability/streams)
+#include <string>
+#include <vector>
 
 
-using std::fstream;
-using std::string;
-using std::vector;
-using std::map;
-using std::stringstream;
-using std::cout;
 using std::cerr;
+using std::cout;
 using std::endl;
+using std::fstream;
+using std::map;
+using std::max;
+using std::min;
+using std::string;
+using std::stringstream;
+using std::vector;
 
 
 // A macro to disallow the copy constructor and operator= functions
