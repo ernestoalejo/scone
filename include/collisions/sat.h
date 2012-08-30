@@ -11,6 +11,7 @@
 
 namespace collisions {
 
+
 struct Circle {
   sf::Vector2f center;
   float radio;
@@ -18,13 +19,21 @@ struct Circle {
 
 
 struct Rect {
-  sf::Vector2f pos;
-  sf::Vector2f size;
+  sf::Vector2f pos, size, scale;
+  float angle;
 
-  /**
-   * Matriz 3x3 que guarda las rotaciones y las escalas
-   */
-  sf::Transform trans;
+  sf::Transform getInverse() const {
+    sf::Vector2f center(size.x / 2, size.y / 2);
+
+    sf::Transform t;
+    t = t.scale(scale, center).getInverse();
+    t.translate(-pos);
+
+    if (angle != 0)
+      t.rotate(-angle, center);
+
+    return t;
+  }
 };
 
 
@@ -61,10 +70,9 @@ SATInfo SATCircles(const Circle& a, const Circle& b);
  * Comprueba si colisionan dos rectangulos
  * @param a Rectangulo 1.
  * @param b Rectangulo 2.
- * @param Ahorra calculos si estan alineados.
  * @return La informacion de la colision
  */
-SATInfo SATRects(const Rect& a, const Rect& b, bool aligned);
+SATInfo SATRects(const Rect& a, const Rect& b);
 
 
 /**

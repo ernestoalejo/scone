@@ -176,24 +176,27 @@ SATInfo SATPolygonCircle(vector<sf::Vector2f>& verticesA,
   return info;
 }
 
-SATInfo collisions::SATRects(const Rect& a, const Rect& b, bool aligned) {
+SATInfo collisions::SATRects(const Rect& a, const Rect& b) {
+  sf::Transform atrans(a.getInverse());
+  sf::Transform btrans(b.getInverse());
+
   vector<sf::Vector2f> va(4);
-  va[0] = a.trans.transformPoint(0, 0);
-  va[1] = a.trans.transformPoint(a.size.x, 0);
-  va[2] = a.trans.transformPoint(a.size.x, a.size.y);
-  va[3] = a.trans.transformPoint(0, a.size.y);
+  va[0] = atrans.transformPoint(0, 0);
+  va[1] = atrans.transformPoint(a.size.x, 0);
+  va[2] = atrans.transformPoint(a.size.x, a.size.y);
+  va[3] = atrans.transformPoint(0, a.size.y);
 
   vector<sf::Vector2f> vb(4);
-  vb[0] = b.trans.transformPoint(0, 0);
-  vb[1] = b.trans.transformPoint(b.size.x, 0);
-  vb[2] = b.trans.transformPoint(b.size.x, b.size.y);
-  vb[3] = b.trans.transformPoint(0, b.size.y);
+  vb[0] = btrans.transformPoint(0, 0);
+  vb[1] = btrans.transformPoint(b.size.x, 0);
+  vb[2] = btrans.transformPoint(b.size.x, b.size.y);
+  vb[3] = btrans.transformPoint(0, b.size.y);
 
   // Offset between the two figures
   sf::Vector2f offset(a.pos.x - b.pos.x, a.pos.y - b.pos.y);
 
   SATInfo info = SATPolygons(va, vb, offset);
-  if (!aligned && !info.collides) {
+  if (a.angle != b.angle && !info.collides) {
     info = SATPolygons(vb, va, offset);
   }
   return info;
@@ -201,11 +204,13 @@ SATInfo collisions::SATRects(const Rect& a, const Rect& b, bool aligned) {
 
 
 SATInfo collisions::SATCircleRect(const Circle& b, const Rect& a) {
+  sf::Transform atrans(a.getInverse());
+
   vector<sf::Vector2f> va(4);
-  va[0] = a.trans.transformPoint(0, 0);
-  va[1] = a.trans.transformPoint(a.size.x, 0);
-  va[2] = a.trans.transformPoint(a.size.x, a.size.y);
-  va[3] = a.trans.transformPoint(0, a.size.y);
+  va[0] = atrans.transformPoint(0, 0);
+  va[1] = atrans.transformPoint(a.size.x, 0);
+  va[2] = atrans.transformPoint(a.size.x, a.size.y);
+  va[3] = atrans.transformPoint(0, a.size.y);
 
   sf::Vector2f offset(a.pos.x - b.center.x, a.pos.y - b.center.y);
 
