@@ -16,7 +16,7 @@ struct Info {
   sf::Vector2f escape;
 };
 
-Info PointRectangle(const sf::Vector2f& point, const Rect& rect);
+Info PointRect(const sf::Vector2f& point, const Rect& rect);
 };
 
 

@@ -10,6 +10,7 @@
 
 #include "scone/common.h"
 #include "scone/sprite.h"
+#include "collisions/sat.h"
 
 
 class Platform : public Sprite {
@@ -19,8 +20,11 @@ public:
 
   void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
+  collisions::Rect getCollisionRect();
+
 private:
   sf::Vector2f size;
+  collisions::Rect collisionRect;
 };
 
 

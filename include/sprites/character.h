@@ -7,12 +7,7 @@
 
 
 #include "scone/sprite.h"
-
-
-enum CharacterState {
-  WALK,
-  JUMP,
-};
+#include "scone/level.h"
 
 
 class Character : public Sprite {
@@ -21,10 +16,16 @@ public:
 
   void event(const sf::Event& event);
   void update(float diff);
+  void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+  void setLevel(const Level& level);
 
 private:
-  sf::Vector2f vel_, target_;
-  CharacterState state_;
+  sf::Vector2f vel, target;
+  vector<Platform*> platforms;
+  bool jump;
+
+  sf::Text targetDisplay, velDisplay;
 
   DISALLOW_COPY_AND_ASSIGN(Character);
 };

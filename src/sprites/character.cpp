@@ -6,45 +6,96 @@
 
 #include "scone/resources-manager.h"
 #include "sprites/character.h"
+#include "collisions/points.h"
 
 
 const float VELOCITY = 5;
-const float JUMP_VELOCITY = 25;
-const float ACCELERATION = 0.1;
+const float JUMP_VELOCITY = 20;
+const float ACCELERATION = 0.2;
 const float THRESHOLD = 0.07;
 const float GRAVITY = 15;
 const float DECELERATION = 1;
 
 
 Character::Character()
-  : target_(0, GRAVITY), state_(WALK) {
+  : target(0, GRAVITY), jump(false),
+    targetDisplay("target", sf::Font::getDefaultFont(), 15),
+    velDisplay("vel", sf::Font::getDefaultFont(), 15) {
   ResourcesManager::getInstance().loadTextures(sprite, "character");
   sprite.setPosition(HALF_SCREEN_WIDTH, HALF_SCREEN_HEIGHT);
+  calcSize();
+
+  velDisplay.setPosition(0, 15);
+  targetDisplay.setPosition(0, 30);
 }
 
 
 void Character::update(float diff) {
-  vel_ = target_ * ACCELERATION + vel_ * (1 - ACCELERATION);
+  stringstream velText;
+  velText << vel.x << ", " << vel.y;
+  velDisplay.setString(velText.str());
 
-  if (fabs(vel_.x) < THRESHOLD)
-    vel_.x = 0;
+  stringstream targetText;
+  targetText << target.x << ", " << target.y;
+  targetDisplay.setString(targetText.str());
 
-  if (fabs(vel_.y) < THRESHOLD) {
-    vel_.y = 0;
+  // Change the velocity to reach the target
+  vel = target * ACCELERATION + vel * (1 - ACCELERATION);
 
-    if (state_ == JUMP)
-      state_ = WALK;
+  // Jump to zero if the velocity is near it
+  if (fabs(vel.x) < THRESHOLD)
+    vel.x = 0;
+
+  if (fabs(vel.y) < THRESHOLD) {
+    vel.y = 0;
+
+    if(jump)
+      target.y = -JUMP_VELOCITY;
   }
 
-  target_.y = min(target_.y + DECELERATION, GRAVITY);
-
-  sprite.move(vel_);
+  // Move the sprite according to the velocity
+  sprite.move(vel);
 
   sf::Vector2f pos = sprite.getPosition();
-  if (pos.y > 400) {
-    pos.y = 400;
-    sprite.setPosition(pos);
+  bool collided = false;
+
+  sf::Vector2f p(pos.x, pos.y + size.y/2 + 1);
+  for(unsigned int i = 0; i < platforms.size(); i++) {
+    // Test the bottom point against the platform
+    collisions::Rect r(platforms[i]->getCollisionRect());
+    collisions::Info info(collisions::PointRect(p, r));
+
+    if(info.collides) {
+      collided = true;
+
+      if(target.y > 0) {
+        // Stop the char inmediatly without deacceleration
+        // when the ground is hitted
+        target.y = vel.y = 0;
+
+        // Escape from the collision
+        pos.y -= (p.y - r.pos.y);
+
+        collided = true;
+      }
+    }
   }
+ 
+  if(pos.y >= 450) {
+    // Stop the falling of the char if needed
+    if(target.y > 0)
+      target.y = vel.y = 0;
+
+    // Don't let the char go down this line
+    pos.y = 450;
+    collided = true;
+  }
+
+  // Apply gravity
+  if(target.y < 0 || !collided)
+    target.y = min(target.y + DECELERATION, GRAVITY);
+
+  sprite.setPosition(pos);
 }
 
 
@@ -52,17 +103,15 @@ void Character::event(const sf::Event& event) {
   if (event.type == sf::Event::KeyPressed) {
     switch (event.key.code) {
     case sf::Keyboard::Up:
-      if (state_ == WALK) {
-        target_.y = -JUMP_VELOCITY;
-        state_ = JUMP;
-      }
+      jump = true;
       break;
 
     case sf::Keyboard::Left:
-      target_.x = -VELOCITY;
+      target.x = -VELOCITY;
       break;
+
     case sf::Keyboard::Right:
-      target_.x =  VELOCITY;
+      target.x =  VELOCITY;
       break;
 
     default:
@@ -72,7 +121,11 @@ void Character::event(const sf::Event& event) {
     switch (event.key.code) {
     case sf::Keyboard::Left:
     case sf::Keyboard::Right:
-      target_.x = 0;
+      target.x = 0;
+      break;
+
+    case sf::Keyboard::Up:
+      jump = false;
       break;
 
     default:
@@ -80,3 +133,22 @@ void Character::event(const sf::Event& event) {
     }
   }
 }
+
+
+void Character::setLevel(const Level& level) {
+  platforms = level.getPlatform();
+}
+
+
+void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+  Sprite::draw(target, states);
+
+  sf::View v = target.getView();
+  target.setView(target.getDefaultView());
+
+  target.draw(targetDisplay);
+  target.draw(velDisplay);
+
+  target.setView(v);
+}
+ 

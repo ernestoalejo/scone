@@ -31,3 +31,8 @@ void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 int Level::getLevelSize() {
   return levelSize;
 }
+
+vector<Platform*> Level::getPlatform() const {
+  return platform;
+}
+

@@ -1,4 +1,10 @@
 
+ * Arreglar el problema del continuo flickering del target speed.
+ * Arreglar el problema de subirse a una plataforma cuando no ha llegado.
+
+ * Colisionar los dos puntos de abajo del muñeco para ver si ha llegado a 
+   una plataforma.
+
  ~ Unit tests para todos los archivos .cpp.
  ~ Terminar el Level / LevelLoader con el cargador genérico.
  ~ Documentar un poco mejor todos los items del proyecto.

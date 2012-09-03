@@ -23,10 +23,12 @@ public:
 
   sf::Vector2f position();
 
+  sf::Vector2f size;
 
 protected:
   sf::Sprite sprite;
 
+  void calcSize();
 
 private:
   DISALLOW_COPY_AND_ASSIGN(Sprite);

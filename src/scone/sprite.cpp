@@ -23,3 +23,9 @@ void Sprite::event(const sf::Event& event) {
 sf::Vector2f Sprite::position() {
   return sprite.getPosition();
 }
+
+void Sprite::calcSize() {
+  sf::FloatRect bounds(sprite.getLocalBounds());
+  size.x = bounds.width;
+  size.y = bounds.height;
+}

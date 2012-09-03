@@ -21,7 +21,7 @@ public:
   void event(const sf::Event& event);
   void draw(sf::RenderTarget& target, sf::RenderStates states) const;
   int getLevelSize();
-
+  vector<Platform*> getPlatform() const;
 
 private:
   vector<Platform*> platform;

@@ -9,7 +9,7 @@ using collisions::Info;
 using collisions::Rect;
 
 
-Info collisions::PointRectangle(const sf::Vector2f& point, const Rect& rect) {
+Info collisions::PointRect(const sf::Vector2f& point, const Rect& rect) {
   Info info;
   info.collides = false;
 
