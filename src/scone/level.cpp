@@ -3,6 +3,7 @@
 // See LICENSE for more info.
 
 #include <string>
+#include <vector>
 
 #include "scone/level.h"
 

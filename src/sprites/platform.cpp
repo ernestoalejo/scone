@@ -17,7 +17,8 @@ Platform::Platform(sf::FloatRect rect, string name)
   sprite.scale(rect.width / sprite.getLocalBounds().width,
                rect.height / sprite.getLocalBounds().height);
 
-  collisionRect.pos = sf::Vector2f(rect.left - size.x/2, rect.top - size.y/2);
+  collisionRect.pos = sf::Vector2f(rect.left - size.x / 2,
+                                   rect.top - size.y / 2);
   collisionRect.size = size;
   collisionRect.scale = sf::Vector2f(0, 0);
   collisionRect.angle = 0;

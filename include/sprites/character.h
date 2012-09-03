@@ -5,6 +5,7 @@
 #ifndef INCLUDE_SPRITES_CHARACTER_H_
 #define INCLUDE_SPRITES_CHARACTER_H_
 
+#include <vector>
 
 #include "scone/sprite.h"
 #include "scone/level.h"

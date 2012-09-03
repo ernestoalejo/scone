@@ -49,41 +49,41 @@ void Character::update(float diff) {
   if (fabs(vel.y) < THRESHOLD) {
     vel.y = 0;
 
-    if(jump)
+    if (jump)
       target.y = -JUMP_VELOCITY;
   }
 
   // Move the sprite according to the velocity
   sprite.move(vel);
 
-  sf::Vector2f pos = sprite.getPosition();
+  sf::Vector2f pos(sprite.getPosition());
   bool collided = false;
 
-  sf::Vector2f p(pos.x, pos.y + size.y/2 + 1);
-  for(unsigned int i = 0; i < platforms.size(); i++) {
+  sf::Vector2f p(pos.x, pos.y + size.y / 2 + 1);
+  for (unsigned int i = 0; i < platforms.size(); i++) {
     // Test the bottom point against the platform
     collisions::Rect r(platforms[i]->getCollisionRect());
     collisions::Info info(collisions::PointRect(p, r));
 
-    if(info.collides) {
+    if (info.collides) {
       collided = true;
 
-      if(target.y > 0) {
+      if (target.y > 0) {
         // Stop the char inmediatly without deacceleration
         // when the ground is hitted
         target.y = vel.y = 0;
 
         // Escape from the collision
-        pos.y -= (p.y - r.pos.y);
-
-        collided = true;
+        pos.y -= (p.y - r.pos.y - 1);
       }
+
+      break;
     }
   }
- 
-  if(pos.y >= 450) {
+
+  if (pos.y >= 450) {
     // Stop the falling of the char if needed
-    if(target.y > 0)
+    if (target.y > 0)
       target.y = vel.y = 0;
 
     // Don't let the char go down this line
@@ -92,7 +92,7 @@ void Character::update(float diff) {
   }
 
   // Apply gravity
-  if(target.y < 0 || !collided)
+  if (target.y < 0 || !collided)
     target.y = min(target.y + DECELERATION, GRAVITY);
 
   sprite.setPosition(pos);
@@ -151,4 +151,4 @@ void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
   target.setView(v);
 }
- 
+
