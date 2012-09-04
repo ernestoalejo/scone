@@ -63,14 +63,15 @@ void Character::update(float diff) {
   bool collided = false;
 
   sf::Vector2f p(pos.x, pos.y + size.y / 2 + 1);
-
   sf::Vector2f oldP(oldPos.x, oldPos.y + size.y / 2 - 1);
+
   for (unsigned int i = 0; i < platforms.size(); i++) {
     // Test the bottom point against the platform
     collisions::Rect r(platforms[i]->getCollisionRect());
     collisions::Info info(collisions::PointRect(p, r));
 
     if (info.collides) {
+      float dy = (p.y - r.pos.y - 1);
       if (target.y > 0 && oldP.y < r.pos.y) {
         // Change the collision flag
         collided = true;
@@ -80,7 +81,11 @@ void Character::update(float diff) {
         target.y = vel.y = 0;
 
         // Escape from the collision
-        pos.y -= (p.y - r.pos.y - 1);
+        pos.y -= dy;
+      } else if (dy == 0) {
+        // If the char is stopped in a platform, don't flicker
+        // continously down and up
+        collided = true;
       }
 
       // Escape before if a collision it's found
