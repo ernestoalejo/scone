@@ -31,6 +31,9 @@ Character::Character()
 
 
 void Character::update(float diff) {
+  sf::Vector2f oldPos(sprite.getPosition());
+
+  // Prepare the velocity and target texts
   stringstream velText;
   velText << vel.x << ", " << vel.y;
   velDisplay.setString(velText.str());
@@ -60,6 +63,7 @@ void Character::update(float diff) {
   bool collided = false;
 
   sf::Vector2f p(pos.x, pos.y + size.y / 2 + 1);
+  sf::Vector2f oldP(oldPos.x, oldPos.y + size.y / 2 - 1);
   for (unsigned int i = 0; i < platforms.size(); i++) {
     // Test the bottom point against the platform
     collisions::Rect r(platforms[i]->getCollisionRect());
@@ -68,7 +72,10 @@ void Character::update(float diff) {
     if (info.collides) {
       collided = true;
 
-      if (target.y > 0) {
+      // cout << oldP.y << " " << r.pos.y << " " << target.y << endl;
+      if (target.y > 0 && oldP.y < r.pos.y) {
+        // cout << "correct" << oldP.y << " " << r.pos.y << endl;
+
         // Stop the char inmediatly without deacceleration
         // when the ground is hitted
         target.y = vel.y = 0;
@@ -120,8 +127,13 @@ void Character::event(const sf::Event& event) {
   } else if (event.type == sf::Event::KeyReleased) {
     switch (event.key.code) {
     case sf::Keyboard::Left:
+      if (target.x == -VELOCITY)
+        target.x = 0;
+      break;
+
     case sf::Keyboard::Right:
-      target.x = 0;
+      if (target.x == VELOCITY)
+        target.x = 0;
       break;
 
     case sf::Keyboard::Up:

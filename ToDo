@@ -1,6 +1,5 @@
 
  * Arreglar el problema de subirse a una plataforma cuando no ha llegado.
- * Arreglar el bloqueo que se produce al cambiar de sentido.
 
  * Colisionar los dos puntos de abajo del muñeco para ver si ha llegado a 
    una plataforma.
