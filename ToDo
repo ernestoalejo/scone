@@ -1,6 +1,4 @@
 
- * Arreglar el problema de subirse a una plataforma cuando no ha llegado.
-
  * Colisionar los dos puntos de abajo del muñeco para ver si ha llegado a 
    una plataforma.
 

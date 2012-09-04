@@ -63,6 +63,7 @@ void Character::update(float diff) {
   bool collided = false;
 
   sf::Vector2f p(pos.x, pos.y + size.y / 2 + 1);
+
   sf::Vector2f oldP(oldPos.x, oldPos.y + size.y / 2 - 1);
   for (unsigned int i = 0; i < platforms.size(); i++) {
     // Test the bottom point against the platform
@@ -70,11 +71,9 @@ void Character::update(float diff) {
     collisions::Info info(collisions::PointRect(p, r));
 
     if (info.collides) {
-      collided = true;
-
-      // cout << oldP.y << " " << r.pos.y << " " << target.y << endl;
       if (target.y > 0 && oldP.y < r.pos.y) {
-        // cout << "correct" << oldP.y << " " << r.pos.y << endl;
+        // Change the collision flag
+        collided = true;
 
         // Stop the char inmediatly without deacceleration
         // when the ground is hitted
@@ -84,6 +83,7 @@ void Character::update(float diff) {
         pos.y -= (p.y - r.pos.y - 1);
       }
 
+      // Escape before if a collision it's found
       break;
     }
   }
