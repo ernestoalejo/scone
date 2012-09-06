@@ -14,21 +14,12 @@ namespace collisions {
 
 
 /**
- * Comprueba si colisionan dos circulos
- * @param a Circulo 1.
- * @param b Circulo 2.
- * @return La informacion de la colision
- */
-SATInfo SATCircles(const Circle& a, const Circle& b);
-
-
-/**
  * Comprueba si colisionan dos rectangulos
  * @param a Rectangulo 1.
  * @param b Rectangulo 2.
  * @return La informacion de la colision
  */
-SATInfo SATRects(const Rect& a, const Rect& b);
+// Info SATRects(const Rect& a, const Rect& b);
 
 
 /**
@@ -37,7 +28,7 @@ SATInfo SATRects(const Rect& a, const Rect& b);
  * @param b Rectangulo.
  * @return La informacion de la colision
  */
-SATInfo SATCircleRect(const Circle& a, const Rect& b);
+// Info SATCircleRect(const Circle& a, const Rect& b);
 
 
 }   // namespace collisions

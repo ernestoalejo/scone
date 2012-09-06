@@ -29,6 +29,7 @@ using std::min;
 using std::string;
 using std::stringstream;
 using std::vector;
+using sf::Vector2f;
 
 
 // A macro to disallow the copy constructor and operator= functions

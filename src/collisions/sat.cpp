@@ -2,56 +2,11 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
-#include <limits>
-#include <vector>
 
-#include "collisions/sat.h"
-
-
-using collisions::Circle;
-using collisions::Rect;
-using collisions::SATInfo;
-
-
-inline sf::Vector2f normalize(const sf::Vector2f& v) {
-  float  length = sqrt(v.x * v.x + v.y * v.y);
-  return length == 0 ? v : sf::Vector2f(v.x / length, v.y / length);
-}
-
-
-inline sf::Vector2f normal(const sf::Vector2f& p1, const sf::Vector2f& p2) {
-  return normalize(sf::Vector2f(p1.y - p2.y, p2.x - p1.x));
-}
-
-
-inline float dotProduct(const sf::Vector2f& p1, const sf::Vector2f& p2) {
-  return p1.x * p2.x + p1.y * p2.y;
-}
-
-
-SATInfo collisions::SATCircles(const Circle& a, const Circle& b) {
-  SATInfo info;
-  info.collides = false;
-
-  float radiototal = a.radio + b.radio;
-  float dx = (b.center.x - a.center.x);
-  float dy = (b.center.y - a.center.y);
-  if (dx * dx + dy * dy > radiototal * radiototal) {
-    return info;
-  }
-
-  info.collides = true;
-  info.direccion = normalize(sf::Vector2f(dx, dy));
-  info.espacio = radiototal - sqrt(dx * dx + dy * dy);
-  info.correccion = info.direccion * info.espacio;
-
-  return info;
-}
-
-
-SATInfo SATPolygons(vector<sf::Vector2f>& verticesA,
-                    vector<sf::Vector2f>& verticesB, sf::Vector2f& offset) {
-  SATInfo info;
+/*
+Info SATPolygons(vector<Vector2f>& verticesA,
+                    vector<Vector2f>& verticesB, Vector2f& offset) {
+  Info info;
   info.collides = false;
   float shortestDist = std::numeric_limits<float>::max();
 
@@ -60,9 +15,9 @@ SATInfo SATPolygons(vector<sf::Vector2f>& verticesA,
 
   for (int i = 0; i < nsidesA; i++) {
     // Calculates the normal vector between this vertex and the next one.
-    sf::Vector2f nextVertice((i >= nsidesA - 1) ?
+    Vector2f nextVertice((i >= nsidesA - 1) ?
                              verticesA[0] : verticesA[i + 1]);
-    sf::Vector2f axis(normal(verticesA[i], nextVertice));
+    Vector2f axis(normal(verticesA[i], nextVertice));
 
     float min[2];
     float max[2];
@@ -117,18 +72,18 @@ SATInfo SATPolygons(vector<sf::Vector2f>& verticesA,
 }
 
 
-SATInfo SATPolygonCircle(vector<sf::Vector2f>& verticesA,
-                         const Rect& a, const Circle& b, sf::Vector2f& offset) {
-  SATInfo info;
+Info SATPolygonCircle(vector<Vector2f>& verticesA,
+                         const Rect& a, const Circle& b, Vector2f& offset) {
+  Info info;
   info.collides = false;
   float shortestDist = std::numeric_limits<float>::max();
 
   int nsidesA = verticesA.size();
   for (int i = 0; i < nsidesA; i++) {
     // Calculates the normal vector between this vertex and the next one.
-    sf::Vector2f nextVertice((i >= nsidesA - 1) ?
+    Vector2f nextVertice((i >= nsidesA - 1) ?
                              verticesA[0] : verticesA[i + 1]);
-    sf::Vector2f axis(normal(verticesA[i], nextVertice));
+    Vector2f axis(normal(verticesA[i], nextVertice));
 
     float min[2];
     float max[2];
@@ -176,26 +131,26 @@ SATInfo SATPolygonCircle(vector<sf::Vector2f>& verticesA,
   return info;
 }
 
-SATInfo collisions::SATRects(const Rect& a, const Rect& b) {
+Info collisions::SATRects(const Rect& a, const Rect& b) {
   sf::Transform atrans(a.getInverse());
   sf::Transform btrans(b.getInverse());
 
-  vector<sf::Vector2f> va(4);
+  vector<Vector2f> va(4);
   va[0] = atrans.transformPoint(0, 0);
   va[1] = atrans.transformPoint(a.size.x, 0);
   va[2] = atrans.transformPoint(a.size.x, a.size.y);
   va[3] = atrans.transformPoint(0, a.size.y);
 
-  vector<sf::Vector2f> vb(4);
+  vector<Vector2f> vb(4);
   vb[0] = btrans.transformPoint(0, 0);
   vb[1] = btrans.transformPoint(b.size.x, 0);
   vb[2] = btrans.transformPoint(b.size.x, b.size.y);
   vb[3] = btrans.transformPoint(0, b.size.y);
 
   // Offset between the two figures
-  sf::Vector2f offset(a.pos.x - b.pos.x, a.pos.y - b.pos.y);
+  Vector2f offset(a.pos.x - b.pos.x, a.pos.y - b.pos.y);
 
-  SATInfo info = SATPolygons(va, vb, offset);
+  Info info = SATPolygons(va, vb, offset);
   if (a.angle != b.angle && !info.collides) {
     info = SATPolygons(vb, va, offset);
   }
@@ -203,16 +158,17 @@ SATInfo collisions::SATRects(const Rect& a, const Rect& b) {
 }
 
 
-SATInfo collisions::SATCircleRect(const Circle& b, const Rect& a) {
+Info collisions::SATCircleRect(const Circle& b, const Rect& a) {
   sf::Transform atrans(a.getInverse());
 
-  vector<sf::Vector2f> va(4);
+  vector<Vector2f> va(4);
   va[0] = atrans.transformPoint(0, 0);
   va[1] = atrans.transformPoint(a.size.x, 0);
   va[2] = atrans.transformPoint(a.size.x, a.size.y);
   va[3] = atrans.transformPoint(0, a.size.y);
 
-  sf::Vector2f offset(a.pos.x - b.center.x, a.pos.y - b.center.y);
+  Vector2f offset(a.pos.x - b.center.x, a.pos.y - b.center.y);
 
   return SATPolygonCircle(va, a, b, offset);
 }
+*/
