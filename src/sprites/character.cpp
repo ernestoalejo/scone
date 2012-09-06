@@ -62,36 +62,7 @@ void Character::update(float diff) {
   sf::Vector2f pos(sprite.getPosition());
   bool collided = false;
 
-  sf::Vector2f p(pos.x, pos.y + size.y / 2 + 1);
-  sf::Vector2f oldP(oldPos.x, oldPos.y + size.y / 2 - 1);
-
-  for (unsigned int i = 0; i < platforms.size(); i++) {
-    // Test the bottom point against the platform
-    collisions::Rect r(platforms[i]->getCollisionRect());
-    collisions::Info info(collisions::PointRect(p, r));
-
-    if (info.collides) {
-      float dy = (p.y - r.pos.y - 1);
-      if (target.y > 0 && oldP.y < r.pos.y) {
-        // Change the collision flag
-        collided = true;
-
-        // Stop the char inmediatly without deacceleration
-        // when the ground is hitted
-        target.y = vel.y = 0;
-
-        // Escape from the collision
-        pos.y -= dy;
-      } else if (dy == 0) {
-        // If the char is stopped in a platform, don't flicker
-        // continously down and up
-        collided = true;
-      }
-
-      // Escape before if a collision it's found
-      break;
-    }
-  }
+  collided = collidesWithPlatforms(oldPos, pos);
 
   if (pos.y >= 450) {
     // Stop the falling of the char if needed
@@ -169,3 +140,40 @@ void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const {
   target.setView(v);
 }
 
+
+bool Character::collidesWithPlatforms(const sf::Vector2f& oldPos,
+    sf::Vector2f& pos) {
+  sf::Vector2f p(pos.x, pos.y + size.y / 2 + 1);
+  sf::Vector2f oldP(oldPos.x, oldPos.y + size.y / 2 - 1);
+
+  for (unsigned int i = 0; i < platforms.size(); i++) {
+    // Test the bottom point against the platform
+    collisions::Rect r(platforms[i]->getCollisionRect());
+    collisions::Info info(collisions::PointRect(p, r));
+
+    if (info.collides) {
+      float dy = (p.y - r.pos.y - 1);
+      if (target.y > 0 && oldP.y < r.pos.y) {
+        // Stop the char inmediatly without deacceleration
+        // when the ground is hitted
+        target.y = vel.y = 0;
+
+        // Escape from the collision
+        pos.y -= dy;
+
+        // Change the collision flag
+        return true;
+      } else if (dy == 0) {
+        // If the char is stopped in a platform, don't flicker
+        // continously down and up
+        return true;
+      }
+
+      // Escape early if a collision it's found
+      // but no action is required
+      return false;
+    }
+  }
+
+  return false;
+}

@@ -28,6 +28,8 @@ private:
 
   sf::Text targetDisplay, velDisplay;
 
+  bool collidesWithPlatforms(const sf::Vector2f& oldPos, sf::Vector2f& pos);
+
   DISALLOW_COPY_AND_ASSIGN(Character);
 };
 
