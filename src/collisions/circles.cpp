@@ -15,7 +15,6 @@ Info collisions::Circles(const Circle& a, const Circle& b) {
   info.collides = false;
 
   float radioTotal = (a.radio + b.radio);
-
   float dx = (b.center.x - a.center.x);
   float dy = (b.center.y - a.center.y);
   float d2 = (dx * dx + dy * dy);

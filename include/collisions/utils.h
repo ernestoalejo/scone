@@ -14,7 +14,7 @@ namespace collisions {
 
 
 inline Vector2f normalize(const Vector2f& v) {
-  float  length = sqrt(v.x * v.x + v.y * v.y);
+  float length = sqrt(v.x * v.x + v.y * v.y);
   return length == 0 ? v : Vector2f(v.x / length, v.y / length);
 }
 
