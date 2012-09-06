@@ -142,7 +142,7 @@ void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
 
 bool Character::collidesWithPlatforms(const sf::Vector2f& oldPos,
-    sf::Vector2f& pos) {
+                                      sf::Vector2f& pos) {
   sf::Vector2f p(pos.x, pos.y + size.y / 2 + 1);
   sf::Vector2f oldP(oldPos.x, oldPos.y + size.y / 2 - 1);
 

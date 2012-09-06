@@ -6,18 +6,16 @@
 #define INCLUDE_COLLISIONS_POINTS_H_
 
 
-#include "collisions/sat.h"
+#include "collisions/structs.h"
 
 
 namespace collisions {
 
-struct Info {
-  bool collides;
-  sf::Vector2f escape;
-};
 
 Info PointRect(const sf::Vector2f& point, const Rect& rect);
-};
+
+
+}   // namespace collisions
 
 
 #endif  // INCLUDE_COLLISIONS_POINTS_H_

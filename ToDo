@@ -1,4 +1,6 @@
 
+ * Convert SATInfo a Info.
+
  * Colisionar los dos puntos de abajo del muñeco para ver si ha llegado a 
    una plataforma.
 
