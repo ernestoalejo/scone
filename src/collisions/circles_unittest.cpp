@@ -79,7 +79,7 @@ TEST(CirclesTest, SameYAxis) {
 
 
 
-TEST(CirclesTest, FourthQuad) {
+TEST(CirclesTest, Diagonal) {
   Circle a, b;
   Info info;
 
@@ -93,11 +93,55 @@ TEST(CirclesTest, FourthQuad) {
   VECTOR_EQ(Vector2f(-3.2426405, -3.2426405), info.escape);
   VECTOR_EQ(Vector2f(-0.707107, -0.707107), info.direction);
 
-  // And then the A circle at the bottom-right
+  // Then the A circle at the bottom-right
   b.center = Vector2f(2, 2);
   info = collisions::Circles(a, b);
 
   ASSERT_TRUE(info.collides);
   VECTOR_EQ(Vector2f(3.2426405, 3.2426405), info.escape);
   VECTOR_EQ(Vector2f(0.707107, 0.707107), info.direction);
+
+  // Then the A circle at the bottom-left
+  b.center = Vector2f(4, 2);
+  info = collisions::Circles(a, b);
+
+  ASSERT_TRUE(info.collides);
+  VECTOR_EQ(Vector2f(-3.2426405, 3.2426405), info.escape);
+  VECTOR_EQ(Vector2f(-0.707107, 0.707107), info.direction);
+
+  // And finally the A circle at the top-right
+  b.center = Vector2f(2, 4);
+  info = collisions::Circles(a, b);
+
+  ASSERT_TRUE(info.collides);
+  VECTOR_EQ(Vector2f(3.2426405, -3.2426405), info.escape);
+  VECTOR_EQ(Vector2f(0.707107, -0.707107), info.direction);
+}
+
+
+TEST(CirclesTest, TangentCollides) {
+  Circle a, b;
+  Info info;
+
+  a.radio = b.radio = 3;
+  a.center = Vector2f(3, 3);
+  b.center = Vector2f(9, 3);
+  info = collisions::Circles(a, b);
+
+  ASSERT_TRUE(info.collides);
+  VECTOR_EQ(Vector2f(0, 0), info.escape);
+  VECTOR_EQ(Vector2f(-1, 0), info.direction);
+}
+
+
+TEST(CirclesTest, NoCollision) {
+  Circle a, b;
+  Info info;
+
+  a.radio = b.radio = 3;
+  a.center = Vector2f(3, 3);
+  b.center = Vector2f(8, 7);
+  info = collisions::Circles(a, b);
+
+  ASSERT_FALSE(info.collides);
 }
