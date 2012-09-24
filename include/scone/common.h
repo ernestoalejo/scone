@@ -26,6 +26,7 @@ using std::stringstream;
 using std::cout;
 using std::cerr;
 using std::endl;
+using sf::Vector2f;
 
 
 // A macro to disallow the copy constructor and operator= functions
