@@ -7,6 +7,7 @@
 
 Camera::Camera(int end) {
   this->end = end;
+  view.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
 
@@ -36,4 +37,8 @@ void Camera::follow(Sprite& sprite) {
 
 int Camera::getX() {
   return view.getCenter().x - SCREEN_WIDTH / 2;
+}
+
+void Camera::setPos(Vector2f pos){
+  view.setCenter(pos);
 }
