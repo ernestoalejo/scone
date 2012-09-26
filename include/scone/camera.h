@@ -38,7 +38,7 @@ public:
 
   /** @return El valor de la X que indica la posicion */
   int getX();
-  
+
   /**
    * Cambia la posición de la camara, usar solo para pruebas.
    * @param pos Nuevo centro de la camara.

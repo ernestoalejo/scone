@@ -39,6 +39,6 @@ int Camera::getX() {
   return view.getCenter().x - SCREEN_WIDTH / 2;
 }
 
-void Camera::setPos(Vector2f pos){
+void Camera::setPos(Vector2f pos) {
   view.setCenter(pos);
 }

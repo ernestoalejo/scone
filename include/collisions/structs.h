@@ -30,7 +30,6 @@ struct Circle {
 struct Rect {
   Vector2f pos, size, scale;
   float angle;
-
 };
 
 
