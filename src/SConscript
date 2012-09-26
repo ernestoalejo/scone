@@ -12,12 +12,19 @@ apppath = '#bin'
 include_paths = ['#include']
 lib_paths = ['/usr/local/lib']
 
+lst = ['collisions', 'common', 'scone', 'sprites']
+srcs = []
+for f in lst:
+	srcs += Glob(f + '/*.cpp') + Glob(f + '/*/*.cpp')
+
+editor_srcs = Glob('editor/*.cpp') + Glob('common/*.cpp')
+
 libs = ['sfml-system', 'sfml-window', 'sfml-graphics', 'sfml-audio']
-srcs = Glob('*/*.cpp') + Glob('*/*/*.cpp')
 flags = ['-Wall', '-g']
 
 # Command line arguments
 test = ARGUMENTS.get('test', 0)
+editor = ARGUMENTS.get('editor', 0)
 gtest = ARGUMENTS.get('gtest_path', '../../gtest-1.6.0')
 production = ARGUMENTS.get('production', 0)
 
@@ -47,6 +54,9 @@ else:
 	srcs = filter(lambda x: test_name.match(str(x)) == None, srcs)
 
 # Build the program
-Program(os.path.join(apppath, appname), srcs, CPPPATH=include_paths, LIBS=libs,
-	LIBPATH=lib_paths, CPPFLAGS=flags)
-
+if editor:
+	Program(os.path.join(apppath, "level-editor"), editor_srcs, CPPPATH=include_paths, LIBS=libs,
+		LIBPATH=lib_paths, CPPFLAGS=flags)
+else:
+	Program(os.path.join(apppath, appname), srcs, CPPPATH=include_paths, LIBS=libs,
+		LIBPATH=lib_paths, CPPFLAGS=flags)
