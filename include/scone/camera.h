@@ -7,7 +7,7 @@
 
 
 #include "scone/common.h"
-#include "scone/sprite.h"
+#include "common/sprite.h"
 
 
 /**

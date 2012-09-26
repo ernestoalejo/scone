@@ -9,7 +9,7 @@
 #include <string>
 
 #include "scone/common.h"
-#include "scone/sprite.h"
+#include "common/sprite.h"
 
 
 class Platform : public Sprite {
