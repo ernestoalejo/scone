@@ -3,8 +3,8 @@
 // See LICENSE for more info.
 
 
-#ifndef INCLUDE_SCONE_DRAWABLE_H_
-#define INCLUDE_SCONE_DRAWABLE_H_
+#ifndef INCLUDE_COMMON_DRAWABLE_H_
+#define INCLUDE_COMMON_DRAWABLE_H_
 
 
 #include "scone/common.h"
@@ -26,5 +26,5 @@ private:
 };
 
 
-#endif  // INCLUDE_SCONE_DRAWABLE_H_
+#endif  // INCLUDE_COMMON_DRAWABLE_H_
 

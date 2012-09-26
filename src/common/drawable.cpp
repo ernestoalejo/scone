@@ -5,13 +5,13 @@
 #include "common/drawable.h"
 
 void Drawable::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-	// empty
+  // empty
 }
 
 void Drawable::update(float diff) {
-	// empty
+  // empty
 }
 
 void Drawable::event(const sf::Event& event) {
-	// empty
+  // empty
 }

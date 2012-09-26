@@ -2,13 +2,10 @@
 // Copyright 2012 The Scone authors.
 // See LICENSE for more info.
 
-
-#ifndef INCLUDE_SCONE_SPRITE_H_
-#define INCLUDE_SCONE_SPRITE_H_
-
+#ifndef INCLUDE_COMMON_SPRITE_H_
+#define INCLUDE_COMMON_SPRITE_H_
 
 #include "scone/common.h"
-
 
 class Sprite : public sf::Drawable {
 public:
@@ -33,5 +30,4 @@ private:
 };
 
 
-#endif  // INCLUDE_SCONE_SPRITE_H_
-
+#endif  // INCLUDE_COMMON_SPRITE_H_
