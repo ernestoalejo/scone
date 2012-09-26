@@ -42,3 +42,4 @@ int Camera::getX() {
 void Camera::setPos(Vector2f pos) {
   view.setCenter(pos);
 }
+
