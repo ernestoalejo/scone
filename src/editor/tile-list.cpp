@@ -9,6 +9,7 @@ TileList::TileList() {
   filas = 0;
   columnas = 0;
   selected = 0;
+  textura = NULL;
 }
 
 TileList::~TileList() {
@@ -26,14 +27,23 @@ void TileList::Load(string name) {
   filas = bounds.height / 32;
 
   for (int i = 0 ; i < 15 ; i++) {
-    sprites[i].setPosition(760, 284);
+    int x = (i == 7) ? 750 : 760;
+    sprites[i].setPosition(x, 40 * i);
     sprites[i].setTexture(*textura, true);
-    sprites[i].setTextureRect(sf::IntRect(i % columnas, i / columnas, 32, 32));
+    sprites[i].setTextureRect(sf::IntRect((i % columnas) * 32,
+                                          (i / columnas) * 32, 32, 32));
   }
 }
 
 void TileList::draw(sf::RenderTarget& target, sf::RenderStates states) const {
   for (int i = 0 ; i < 15 ; i++) {
     target.draw(sprites[i]);
+  }
+}
+
+void TileList::event(const sf::Event& event) {
+  if (event.type == sf::Event::KeyPressed &&
+      event.key.code == sf::Keyboard::L && textura == NULL) {
+    Load("prueba");
   }
 }

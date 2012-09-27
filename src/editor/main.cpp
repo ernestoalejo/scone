@@ -21,6 +21,7 @@ int main(int argc, char* argv[]) {
            event.key.code == sf::Keyboard::Escape)) {
         screen.close();
       }
+
       list.event(event);
     }
 

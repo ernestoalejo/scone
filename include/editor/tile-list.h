@@ -15,8 +15,9 @@ public:
   TileList();
   ~TileList();
   void Load(string name);
-  
+
   void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+  void event(const sf::Event& event);
 
 private:
   int columnas, filas;
