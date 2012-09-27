@@ -15,6 +15,8 @@ public:
   ~Map();
   void addFila(int fila);
   void addColumna(int columna);
+  void deleteFila(int fila);
+  void deleteColumna(int columna);
   int getFilas();
   int getColumnas();
 private:
@@ -25,6 +27,8 @@ private:
 
   FRIEND_TEST(MapTest, CopiaAniadirFila);
   FRIEND_TEST(MapTest, CopiaAniadirColumna);
+  FRIEND_TEST(MapTest, CopiaDeleteFila);
+  FRIEND_TEST(MapTest, CopiaDeleteColumna);
   DISALLOW_COPY_AND_ASSIGN(Map);
 };
 

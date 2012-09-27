@@ -58,6 +58,46 @@ void Map::addColumna(int columna) {
   }
 }
 
+void Map::deleteFila(int fila) {
+  int** auxstore = new int *[filas - 1];
+  for (int i = 0; i < filas - 1; i++) {
+    auxstore[i] = new int[columnas];
+  }
+  for (int f = 0; f < filas - 1; f++) {
+    for (int c = 0; c < columnas; c++) {
+      if (f < fila) {
+        auxstore[f][c] = store[f][c];
+      } else {
+        auxstore[f][c] = store[f + 1][c];
+      }
+    }
+  }
+
+  liberaEspacio();
+  store = auxstore;
+  filas--;
+}
+
+void Map::deleteColumna(int columna) {
+  int** auxstore = new int *[filas];
+  for (int i = 0; i < columnas - 1; i++) {
+    auxstore[i] = new int[columnas - 1];
+  }
+  for (int f = 0; f < filas; f++) {
+    for (int c = 0; c < columnas - 1; c++) {
+      if (c < columna) {
+        auxstore[f][c] = store[f][c];
+      } else {
+        auxstore[f][c] = store[f][c + 1];
+      }
+    }
+  }
+
+  liberaEspacio();
+  store = auxstore;
+  columnas--;
+}
+
 int Map::getFilas() {
   return filas;
 }

@@ -38,11 +38,11 @@ TEST(MapTest, CopiaAniadirFila) {
 
 TEST(MapTest, AddColumna) {
   Map Prueba;
-  EXPECT_EQ(Prueba.getFilas(), 1);
-  Prueba.addFila(1);
-  EXPECT_EQ(Prueba.getFilas(), 2);
-  Prueba.addFila(2);
-  EXPECT_EQ(Prueba.getFilas(), 3);
+  EXPECT_EQ(Prueba.getColumnas(), 1);
+  Prueba.addColumna(1);
+  EXPECT_EQ(Prueba.getColumnas(), 2);
+  Prueba.addColumna(2);
+  EXPECT_EQ(Prueba.getColumnas(), 3);
 }
 
 TEST(MapTest, CopiaAniadirColumna) {
@@ -65,4 +65,60 @@ TEST(MapTest, CopiaAniadirColumna) {
   EXPECT_EQ(Prueba.store[0][0], -1);
   EXPECT_EQ(Prueba.store[0][1], 3);
   EXPECT_EQ(Prueba.store[0][2], 5);
+}
+
+TEST(MapTest, DeleteFila) {
+  Map Prueba;
+  EXPECT_EQ(Prueba.getFilas(), 1);
+  Prueba.addFila(1);
+  EXPECT_EQ(Prueba.getFilas(), 2);
+  Prueba.deleteFila(1);
+  EXPECT_EQ(Prueba.getFilas(), 1);
+}
+
+TEST(MapTest, CopiaDeleteFila) {
+  Map Prueba;
+  EXPECT_EQ(Prueba.getFilas(), 1);
+  EXPECT_EQ(Prueba.getColumnas(), 1);
+  EXPECT_EQ(Prueba.store[0][0], -1);
+
+  Prueba.addFila(1);
+  EXPECT_EQ(Prueba.getFilas(), 2);
+  EXPECT_EQ(Prueba.getColumnas(), 1);
+  EXPECT_EQ(Prueba.store[0][0], -1);
+  EXPECT_EQ(Prueba.store[1][0], -1);
+
+  Prueba.store[1][0] = 5;
+  Prueba.deleteFila(0);
+  EXPECT_EQ(Prueba.getFilas(), 1);
+  EXPECT_EQ(Prueba.getColumnas(), 1);
+  EXPECT_EQ(Prueba.store[0][0], 5);
+}
+
+TEST(MapTest, DeleteColumna) {
+  Map Prueba;
+  EXPECT_EQ(Prueba.getColumnas(), 1);
+  Prueba.addColumna(1);
+  EXPECT_EQ(Prueba.getColumnas(), 2);
+  Prueba.deleteColumna(0);
+  EXPECT_EQ(Prueba.getColumnas(), 1);
+}
+
+TEST(MapTest, CopiaDeleteColumna) {
+  Map Prueba;
+  EXPECT_EQ(Prueba.getFilas(), 1);
+  EXPECT_EQ(Prueba.getColumnas(), 1);
+  EXPECT_EQ(Prueba.store[0][0], -1);
+
+  Prueba.addColumna(1);
+  EXPECT_EQ(Prueba.getFilas(), 1);
+  EXPECT_EQ(Prueba.getColumnas(), 2);
+  EXPECT_EQ(Prueba.store[0][0], -1);
+  EXPECT_EQ(Prueba.store[0][1], -1);
+
+  Prueba.store[0][1] = 5;
+  Prueba.deleteColumna(0);
+  EXPECT_EQ(Prueba.getFilas(), 1);
+  EXPECT_EQ(Prueba.getColumnas(), 1);
+  EXPECT_EQ(Prueba.store[0][0], 5);
 }
