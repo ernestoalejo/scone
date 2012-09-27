@@ -6,17 +6,14 @@
 #define INCLUDE_COMMON_SPRITE_H_
 
 #include "scone/common.h"
+#include "common/drawable.h"
 
-class Sprite : public sf::Drawable {
+class Sprite : public Drawable {
 public:
   Sprite();
 
   // Implement the sf::Drawable interface
   virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
-  // Functions made to been overwritten
-  virtual void update(float diff);
-  virtual void event(const sf::Event& event);
 
   sf::Vector2f position();
 
