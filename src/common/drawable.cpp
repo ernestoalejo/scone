@@ -4,6 +4,10 @@
 
 #include "common/drawable.h"
 
+Drawable::Drawable() {
+  // empty
+}
+
 void Drawable::draw(sf::RenderTarget& target, sf::RenderStates states) const {
   // empty
 }

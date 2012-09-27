@@ -28,6 +28,9 @@ editor = ARGUMENTS.get('editor', 0)
 gtest = ARGUMENTS.get('gtest_path', '../../gtest-1.6.0')
 production = ARGUMENTS.get('production', 0)
 
+include_paths.append(os.path.join(gtest, 'include'))
+libs += ['gtest', 'pthread']
+lib_paths.append(os.path.join(gtest, 'build'))
 
 # Preparation for the production build
 if int(production):
@@ -43,11 +46,7 @@ if int(test):
 	srcs = filter(lambda x: str(x).find('/main.cpp') == -1, srcs)
 	srcs = filter(lambda x: str(x).find('/private-main.cpp') == -1, srcs)
 	srcs.append(os.path.join(gtest, 'src', 'gtest_main.cc'))
-
-	include_paths.append(os.path.join(gtest, 'include'))
-
-	libs += ['gtest', 'pthread']
-	lib_paths.append(os.path.join(gtest, 'build'))
+	srcs += filter(lambda x: str(x).find('/main.cpp') == -1, Glob('editor/*.cpp'))
 
 	appname += '-test'
 else:
