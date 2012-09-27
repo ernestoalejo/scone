@@ -51,6 +51,7 @@ if int(test):
 	appname += '-test'
 else:
 	srcs = filter(lambda x: test_name.match(str(x)) == None, srcs)
+	editor_srcs = filter(lambda x: test_name.match(str(x)) == None, editor_srcs)
 
 # Build the program
 if editor:

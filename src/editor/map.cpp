@@ -36,7 +36,26 @@ void Map::addFila(int fila) {
 }
 
 void Map::addColumna(int columna) {
-  // empty
+  int** auxstore = new int *[filas];
+  for (int i = 0; i < columnas + 1; i++) {
+    auxstore[i] = new int[columnas + 1];
+  }
+  for (int f = 0; f < filas; f++) {
+    for (int c = 0; c < columnas; c++) {
+      if (c < columna) {
+        auxstore[f][c] = store[f][c];
+      } else {
+        auxstore[f][c + 1] = store[f][c];
+      }
+    }
+  }
+
+  liberaEspacio();
+  store = auxstore;
+  columnas++;
+  for (int i = 0; i < filas; i++) {
+    store[i][columna] = -1;
+  }
 }
 
 int Map::getFilas() {

@@ -23,7 +23,8 @@ private:
   void reservaEspacio();
   void liberaEspacio();
 
-  FRIEND_TEST(MapTest, CopiaAniadir);
+  FRIEND_TEST(MapTest, CopiaAniadirFila);
+  FRIEND_TEST(MapTest, CopiaAniadirColumna);
   DISALLOW_COPY_AND_ASSIGN(Map);
 };
 
