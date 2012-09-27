@@ -18,6 +18,7 @@ public:
 
   void draw(sf::RenderTarget& target, sf::RenderStates states) const;
   void event(const sf::Event& event);
+  void update(float diff);
 
 private:
   int columnas, filas;

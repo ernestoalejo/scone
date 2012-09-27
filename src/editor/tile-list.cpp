@@ -30,8 +30,6 @@ void TileList::Load(string name) {
     int x = (i == 7) ? 750 : 760;
     sprites[i].setPosition(x, 40 * i);
     sprites[i].setTexture(*textura, true);
-    sprites[i].setTextureRect(sf::IntRect((i % columnas) * 32,
-                                          (i / columnas) * 32, 32, 32));
   }
 }
 
@@ -42,8 +40,47 @@ void TileList::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 }
 
 void TileList::event(const sf::Event& event) {
-  if (event.type == sf::Event::KeyPressed &&
-      event.key.code == sf::Keyboard::L && textura == NULL) {
-    Load("prueba");
+  if (event.type == sf::Event::KeyPressed) {
+    switch(event.key.code){
+      case sf::Keyboard::L:
+        if (textura == NULL){
+          Load("prueba");
+        }
+        break;
+
+      case sf::Keyboard::W:
+        selected--;
+        if (selected < 0)
+          selected = columnas * filas;
+        break;
+
+      case sf::Keyboard::S:
+        selected++;
+        selected = selected % (columnas * filas);
+        break;
+
+      default:
+        break;
+    }
+  }
+}
+
+void TileList::update(float diff){
+  if (columnas == 0 && filas == 0)
+    return;
+
+  int total = columnas * filas;
+
+  int n = selected - 7;
+  if (n < 0)
+    n += total;
+
+  for (int i = 0 ; i < 15 ; i++) {
+    int j = n + i;
+    if (j > total)
+      j -= total;
+
+    sprites[i].setTextureRect(sf::IntRect((j % columnas) * 32,
+                                          (j / columnas) * 32, 32, 32));
   }
 }
